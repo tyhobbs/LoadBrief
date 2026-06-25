@@ -1,0 +1,62 @@
+# ── Model checkpoints and weights (host on Hugging Face, not git) ──────
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+final_model*/
+sft_checkpoint*/
+*_checkpoint*/
+checkpoints/
+adapter_model/
+
+# ── Generated data and large artifacts ────────────────────────────────
+# Keep data_sample.jsonl (committed intentionally); ignore everything else.
+*.jsonl
+!data_sample.jsonl
+dataset/
+formatted/
+baseline_outputs/
+llm_judge_results/
+paper_artifacts/
+evaluation_results.json
+
+# ── Secrets — never commit API keys ───────────────────────────────────
+.env
+.env.*
+*.key
+secrets.*
+**/api_key*
+
+# ── Python ────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# ── HuggingFace / model cache ─────────────────────────────────────────
+.cache/
+hf_cache/
+~/.cache/huggingface/
+
+# ── LaTeX build artifacts (if a paper/ dir is added) ──────────────────
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# ── OS / editor ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
