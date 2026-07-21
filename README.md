@@ -7,7 +7,7 @@ LoadBrief converts a free-text athlete monitoring summary (training load, heart-
 The model, dataset, and a runnable demo are on Hugging Face:
 
 - **Model:** [https://huggingface.co/tyhob/loadbrief](https://huggingface.co/tyhob/loadbrief)
-- **Dataset:** [https://huggingface.co/datasets/tyhob/loadbrief](https://huggingface.co/datasets/tyhob/loadbrief-50k)
+- **Dataset:** [https://huggingface.co/datasets/tyhob/loadbrief-50k](https://huggingface.co/datasets/tyhob/loadbrief-50k)
 
 > Built with Meta Llama 3. Model weights are subject to the [Meta Llama 3 license](https://llama.meta.com/llama3/license/).
 
