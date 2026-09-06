@@ -1,0 +1,283 @@
+{
+  "corpus": "dataset_v8/train.jsonl",
+  "results": {
+    "acwr_spike": {
+      "acwr": {
+        "n": 2824,
+        "overlap": 0.988,
+        "p5": 1.547,
+        "p95": 1.79,
+        "median": 1.671,
+        "verdict": "OK",
+        "declared": [
+          1.5,
+          2.0
+        ]
+      }
+    },
+    "altitude_camp": {
+      "acwr": {
+        "n": 2342,
+        "overlap": 0.981,
+        "p5": 0.922,
+        "p95": 1.078,
+        "median": 1.0,
+        "verdict": "OK",
+        "declared": [
+          0.9,
+          1.3
+        ]
+      }
+    },
+    "double_session_accumulation": {
+      "acwr": {
+        "n": 1686,
+        "overlap": 0.695,
+        "p5": 1.095,
+        "p95": 1.397,
+        "median": 1.251,
+        "verdict": "OK",
+        "declared": [
+          1.2,
+          1.6
+        ]
+      }
+    },
+    "early_overreaching": {
+      "acwr": {
+        "n": 1716,
+        "overlap": 0.934,
+        "p5": 0.893,
+        "p95": 1.105,
+        "median": 1.0,
+        "verdict": "OK",
+        "declared": [
+          0.9,
+          1.2
+        ]
+      }
+    },
+    "fixture_congestion": {
+      "acwr": {
+        "n": 2506,
+        "overlap": 0.723,
+        "p5": 0.974,
+        "p95": 1.463,
+        "median": 1.208,
+        "verdict": "OK",
+        "declared": [
+          1.1,
+          1.5
+        ]
+      }
+    },
+    "heat_acclimatization": {
+      "acwr": {
+        "n": 1731,
+        "overlap": 1.0,
+        "p5": 0.926,
+        "p95": 1.083,
+        "median": 1.0,
+        "verdict": "OK",
+        "declared": [
+          0.8,
+          1.2
+        ]
+      }
+    },
+    "high_acwr_stable_physiology": {
+      "acwr": {
+        "n": 1733,
+        "overlap": 0.827,
+        "p5": 1.484,
+        "p95": 1.634,
+        "median": 1.559,
+        "verdict": "OK",
+        "declared": [
+          1.4,
+          1.6
+        ]
+      }
+    },
+    "illness_return": {
+      "acwr": {
+        "n": 2394,
+        "overlap": 0.679,
+        "p5": 1.087,
+        "p95": 1.902,
+        "median": 1.655,
+        "verdict": "OK",
+        "declared": [
+          1.2,
+          1.8
+        ]
+      }
+    },
+    "monotony_problem": {
+      "acwr": {
+        "n": 2396,
+        "overlap": 0.808,
+        "p5": 0.821,
+        "p95": 1.175,
+        "median": 0.994,
+        "verdict": "OK",
+        "declared": [
+          0.9,
+          1.3
+        ]
+      },
+      "monotony": {
+        "n": 2144,
+        "overlap": 0.64,
+        "p5": 2.41,
+        "p95": 6.08,
+        "median": 3.365,
+        "verdict": "OK",
+        "declared": [
+          2.5,
+          4.0
+        ]
+      }
+    },
+    "normal_progressive": {
+      "acwr": {
+        "n": 2767,
+        "overlap": 0.999,
+        "p5": 1.001,
+        "p95": 1.138,
+        "median": 1.069,
+        "verdict": "OK",
+        "declared": [
+          0.9,
+          1.2
+        ]
+      }
+    },
+    "overtraining_syndrome": {
+      "acwr": {
+        "n": 1706,
+        "overlap": 0.982,
+        "p5": 0.465,
+        "p95": 0.57,
+        "median": 0.514,
+        "verdict": "OK",
+        "declared": [
+          0.45,
+          0.65
+        ]
+      }
+    },
+    "post_competition": {
+      "acwr": {
+        "n": 2656,
+        "overlap": 0.974,
+        "p5": 0.668,
+        "p95": 0.868,
+        "median": 0.769,
+        "verdict": "OK",
+        "declared": [
+          0.6,
+          0.9
+        ]
+      }
+    },
+    "preseason_intensification": {
+      "acwr": {
+        "n": 2425,
+        "overlap": 0.57,
+        "p5": 1.196,
+        "p95": 1.382,
+        "median": 1.307,
+        "verdict": "OK",
+        "declared": [
+          1.3,
+          1.7
+        ]
+      }
+    },
+    "recreational_minimal_data": {
+      "acwr": {
+        "n": 327,
+        "overlap": 0.272,
+        "p5": 0.524,
+        "p95": 1.195,
+        "median": 0.747,
+        "verdict": "MARGINAL",
+        "declared": [
+          0.8,
+          1.6
+        ]
+      }
+    },
+    "taper": {
+      "acwr": {
+        "n": 2722,
+        "overlap": 0.916,
+        "p5": 0.535,
+        "p95": 0.822,
+        "median": 0.581,
+        "verdict": "OK",
+        "declared": [
+          0.5,
+          0.75
+        ]
+      }
+    },
+    "travel_jet_lag": {
+      "acwr": {
+        "n": 1717,
+        "overlap": 0.998,
+        "p5": 0.669,
+        "p95": 0.866,
+        "median": 0.77,
+        "verdict": "OK",
+        "declared": [
+          0.6,
+          1.0
+        ]
+      }
+    },
+    "undertraining": {
+      "acwr": {
+        "n": 2836,
+        "overlap": 0.865,
+        "p5": 0.394,
+        "p95": 0.84,
+        "median": 0.451,
+        "verdict": "OK",
+        "declared": [
+          0.3,
+          0.7
+        ]
+      }
+    },
+    "wellness_crash_normal_load": {
+      "acwr": {
+        "n": 1749,
+        "overlap": 0.937,
+        "p5": 0.893,
+        "p95": 1.104,
+        "median": 0.995,
+        "verdict": "OK",
+        "declared": [
+          0.9,
+          1.2
+        ]
+      }
+    },
+    "youth_growth_spurt": {
+      "acwr": {
+        "n": 1767,
+        "overlap": 0.927,
+        "p5": 0.887,
+        "p95": 1.12,
+        "median": 0.998,
+        "verdict": "OK",
+        "declared": [
+          0.9,
+          1.2
+        ]
+      }
+    }
+  }
+}
