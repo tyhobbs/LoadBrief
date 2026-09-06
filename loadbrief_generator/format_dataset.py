@@ -6,6 +6,7 @@
 
 from datasets import load_dataset, Dataset
 import json
+import argparse
 from pathlib import Path
 
 
@@ -83,24 +84,31 @@ def load_from_jsonl(path: str) -> list:
 
 
 def main():
+    ap = argparse.ArgumentParser(description="Format LoadBrief data for training")
+    ap.add_argument("--data_dir", default="./dataset_v2",
+                    help="source dir with train/validation/test.jsonl")
+    ap.add_argument("--out_dir", default="./formatted_v2",
+                    help="destination dir for formatted splits")
+    args = ap.parse_args()
+
     print("LoadBrief Dataset Formatter")
     print("=" * 40)
+    print(f"Source: {args.data_dir}")
+    print(f"Output: {args.out_dir}")
 
     # Check if dataset exists locally or load from HuggingFace
-    local_train = Path("./dataset/train.jsonl")
+    local_train = Path(f"{args.data_dir}/train.jsonl")
 
     if local_train.exists():
         print("Loading from local dataset...")
-        train_raw = load_from_jsonl("./dataset/train.jsonl")
-        val_raw = load_from_jsonl("./dataset/validation.jsonl")
-        test_raw = load_from_jsonl("./dataset/test.jsonl")
+        train_raw = load_from_jsonl(f"{args.data_dir}/train.jsonl")
+        val_raw = load_from_jsonl(f"{args.data_dir}/validation.jsonl")
+        test_raw = load_from_jsonl(f"{args.data_dir}/test.jsonl")
     else:
-        print("Loading from HuggingFace...")
-        print("(Update 'your-username' with your HF username)")
-        dataset = load_dataset("your-username/LoadBrief-50K")
-        train_raw = list(dataset["train"])
-        val_raw = list(dataset["validation"])
-        test_raw = list(dataset["test"])
+        raise SystemExit(
+            f"No train.jsonl found in {args.data_dir}. "
+            f"Pass --data_dir pointing at your regenerated corpus."
+        )
 
     print(f"Raw examples — Train: {len(train_raw):,} "
           f"| Val: {len(val_raw):,} "
@@ -128,14 +136,14 @@ def main():
           f"(one per audience type)")
 
     # Save SFT formatted data
-    Path("./formatted").mkdir(exist_ok=True)
+    Path(args.out_dir).mkdir(parents=True, exist_ok=True)
 
     for split_name, split_data in [
         ("train", sft_train),
         ("validation", sft_val),
         ("test", sft_test)
     ]:
-        output_path = f"./formatted/sft_{split_name}.jsonl"
+        output_path = f"{args.out_dir}/sft_{split_name}.jsonl"
         with open(output_path, 'w', encoding='utf-8') as f:
             for ex in split_data:
                 f.write(json.dumps(ex, ensure_ascii=False) + "\n")
@@ -150,7 +158,7 @@ def main():
         for ex in train_raw
     ]
 
-    output_path = "./formatted/grpo_train.jsonl"
+    output_path = f"{args.out_dir}/grpo_train.jsonl"
     with open(output_path, 'w', encoding='utf-8') as f:
         for ex in grpo_train:
             f.write(json.dumps(ex, ensure_ascii=False) + "\n")
