@@ -59,9 +59,10 @@ def sport_category(sport: str) -> str:
     return "other"
 
 
-def load_metadata():
+def load_metadata(test_override=None):
     """id -> {sport, sport_cat, scenario_type, complexity_tier, risk_level, audience}."""
-    path = next((p for p in TEST_PATHS if Path(p).exists()), None)
+    paths = [test_override] if test_override else TEST_PATHS
+    path = next((p for p in paths if p and Path(p).exists()), None)
     if path is None:
         print(f"WARNING: no metadata file found (looked for {TEST_PATHS}).")
         print("Stratified slices will be unavailable; only overall shown.")
@@ -156,9 +157,12 @@ def main():
     ap.add_argument("--by", default="all",
                     choices=["all", "tier", "sport", "scenario", "risk", "audience"],
                     help="Which dimension to slice by")
+    ap.add_argument("--test", default=None,
+                    help="test metadata file (id->scenario). Use "
+                         "formatted_v2/sft_test.jsonl for v2 models.")
     args = ap.parse_args()
 
-    loaded = load_metadata()
+    loaded = load_metadata(args.test)
     if isinstance(loaded, tuple):
         meta, meta_path = loaded
     else:
