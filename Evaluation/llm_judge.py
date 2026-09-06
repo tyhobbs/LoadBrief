@@ -40,12 +40,12 @@ import argparse
 import statistics
 from pathlib import Path
 
-BASELINE_DIR = "./baseline_outputs"
-OUTPUT_DIR   = "./llm_judge_results"
+BASELINE_DIR    = "./baseline_outputs_v8"
+OUTPUT_DIR      = "./llm_judge_results_v8"
 
 # For stratified sampling: where scenario_type metadata lives, keyed by the
 # line-index id that also identifies each brief in the baseline outputs.
-TEST_META_PATHS = ["./formatted/sft_test.jsonl", "./data_sample.jsonl"]
+TEST_META_PATHS = ["./formatted_v8/sft_test.jsonl", "./data_sample.jsonl"]
 
 
 def load_scenario_map():
