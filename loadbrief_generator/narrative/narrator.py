@@ -347,7 +347,16 @@ class MonitoringNarrator:
 
     def _build_special_notes(self, scenario,
                               athlete: Dict) -> Optional[str]:
-        """Build special circumstance notes based on scenario"""
+        """Build special circumstance notes based on scenario.
+
+        NOTE: this chain is the ONLY path by which a scenario's defining
+        context reaches the input narrative. A scenario absent from this
+        chain is non-identifiable: the model is asked to produce a label
+        that nothing in its input supports. early_overreaching, OTS,
+        double_session, and fixture_congestion were all missing, and
+        early_overreaching scored 2.13 against a 6.50 reference ceiling
+        as a direct result.
+        """
         special = scenario.special_parameters
 
         if "altitude_meters" in special:
@@ -398,6 +407,47 @@ class MonitoringNarrator:
                 f"Context: athlete returning after "
                 f"{illness_days}-day {illness_type.replace('_', ' ')} "
                 f"enforced rest period."
+            )
+
+        elif "weeks_elevated" in special:
+            weeks = special["weeks_elevated"]
+            if isinstance(weeks, tuple):
+                weeks = random.randint(*weeks)
+            return (
+                f"Context: training load has been sustained at an "
+                f"elevated level for {weeks} consecutive weeks without "
+                f"a planned unloading period."
+            )
+
+        elif "weeks_excessive_load" in special:
+            weeks = special["weeks_excessive_load"]
+            if isinstance(weeks, tuple):
+                weeks = random.randint(*weeks)
+            return (
+                f"Context: athlete has carried excessive training load "
+                f"for approximately {weeks} weeks, with performance "
+                f"reportedly declining despite recent load reduction."
+            )
+
+        elif "double_days_per_week" in special:
+            days = special["double_days_per_week"]
+            hours = special.get("inter_session_hours", (4, 6))
+            if isinstance(days, tuple):
+                days = random.randint(*days)
+            if isinstance(hours, tuple):
+                hours = random.randint(*hours)
+            return (
+                f"Context: schedule includes {days} double-session days "
+                f"per week, with {hours} hours between sessions."
+            )
+
+        elif "matches_per_week" in special:
+            m = special["matches_per_week"]
+            if isinstance(m, tuple):
+                m = random.randint(*m)
+            return (
+                f"Context: competitive schedule has required {m} matches "
+                f"per week during this monitoring period."
             )
 
         return None
