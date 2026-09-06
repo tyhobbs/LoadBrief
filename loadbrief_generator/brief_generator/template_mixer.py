@@ -244,13 +244,26 @@ class TemplateMixer:
                 )
             )
 
-        # 5. Signal integration narrative
+        # 5. Signal integration narrative + scenario-contextual rationale.
+        #    The rationale explains WHY signals read as they do in override
+        #    scenarios; without it the brief states a benign label over
+        #    adverse signals with no explanation.
         synthesis_narrative = synthesis.get(
             "synthesis_narrative", ""
         )
+        rationale_lines = (
+            synthesis.get("scenario_rationale", {}) or {}
+        ).get(audience, [])[1:]   # [0] is reserved for CURRENT STATUS
+
+        integration_parts = []
         if synthesis_narrative:
+            integration_parts.append(synthesis_narrative)
+        if rationale_lines:
+            integration_parts.append(" ".join(rationale_lines))
+
+        if integration_parts:
             sections.append(
-                f"SIGNAL INTEGRATION:\n{synthesis_narrative}"
+                "SIGNAL INTEGRATION:\n" + " ".join(integration_parts)
             )
 
         # 6. Overreaching classification
@@ -331,10 +344,35 @@ class TemplateMixer:
                 "Insufficient data for full load analysis."
             )
 
-        # Athlete gets plain language
+        # Athlete gets plain language        #
+        # The "undertraining" line is correct for a genuine undertraining
+        # scenario but WRONG under a severe label: in overtraining syndrome
+        # the ACWR zone is also "undertraining", and framing that as "losing
+        # fitness" contradicts a CRITICAL call. The low load is a symptom of
+        # depletion, not a detraining concern.
+        severe_labels = {"overtraining_syndrome",
+                         "non_functional_overreaching"}
+        elevated_risk = {"high", "critical", "moderate_to_high"}
+        is_severe = (
+            (synthesis.get("overreaching_class") or "") in severe_labels
+            or (synthesis.get("risk_level") or "") in elevated_risk
+        )
+
         if audience == "athlete":
+            if is_severe:
+                undertraining_line = (
+                    f"Your training load is low ({acwr:.2f} ratio), but that "
+                    f"reflects how depleted your body is right now — it is "
+                    f"part of the problem, not a fitness concern."
+                )
+            else:
+                undertraining_line = (
+                    f"Your training load is low ({acwr:.2f} ratio). "
+                    f"You may be losing fitness."
+                )
+
             zone_plain = {
-                "undertraining": f"Your training load is low ({acwr:.2f} ratio). You may be losing fitness.",
+                "undertraining": undertraining_line,
                 "sweet_spot": f"Your training load is well-balanced ({acwr:.2f} ratio). Good work.",
                 "caution": f"Your training load is getting high ({acwr:.2f} ratio). Worth watching.",
                 "danger": f"Your training load spiked recently ({acwr:.2f} ratio). Your body is under significant stress.",
@@ -404,8 +442,16 @@ class TemplateMixer:
                 "normal": "Your recovery score is normal — good to go.",
                 "elevated_good_recovery": "Your recovery score is above normal — you are well-rested.",
                 "moderately_suppressed": "Your recovery score is slightly low — some fatigue building.",
-                "significantly_suppressed": f"Your recovery score has been low for {days} days — your body needs more rest.",
-                "critically_suppressed": f"Your recovery score has been very low for {days} days in a row — this is a clear signal to rest.",
+                 "significantly_suppressed": (
+                    f"Your recovery score has been low for {days} days — your body needs more rest."
+                    if days >= 1 else
+                    "Your recovery score is well below your normal — your body needs more rest."
+                ),
+                "critically_suppressed": (
+                    f"Your recovery score has been very low for {days} days in a row — this is a clear signal to rest."
+                    if days >= 1 else
+                    "Your recovery score is far below your normal — this is a clear signal to rest."
+                ),
                 "data_unavailable": "Recovery score data not available."
             }
             hrv_text = status_plain.get(
@@ -428,15 +474,15 @@ class TemplateMixer:
                     f"HRV moderately suppressed: {current_val:.1f}ms "
                     f"({delta_abs:.1f}ms below {baseline:.1f}ms baseline)."
                 ),
-                "significantly_suppressed": (
+                 "significantly_suppressed": (
                     f"HRV significantly suppressed: {current_val:.1f}ms "
-                    f"({delta_abs:.1f}ms below baseline, "
-                    f"{days} consecutive days)."
+                    f"({delta_abs:.1f}ms below baseline"
+                    + (f", {days} consecutive days)." if days >= 1 else ").")
                 ),
                 "critically_suppressed": (
                     f"HRV critically suppressed: {current_val:.1f}ms "
-                    f"({delta_abs:.1f}ms below {baseline:.1f}ms baseline "
-                    f"for {days} consecutive days)."
+                    f"({delta_abs:.1f}ms below {baseline:.1f}ms baseline"
+                    + (f" for {days} consecutive days)." if days >= 1 else ").")
                 ),
                 "data_unavailable": "HRV data unavailable for this period."
             }
@@ -464,9 +510,29 @@ class TemplateMixer:
             if data.get("zone") in ["red", "amber"]
         ]
 
+        # Name only what was ACTUALLY monitored. Hardcoding a fixed dimension
+        # list asserted coverage the data may not have — the judge flagged
+        # briefs claiming the athlete "feels good" across sleep/energy/
+        # soreness/mood when monitoring was limited to sleep alone.
+        monitored = [d.replace("_", " ") for d in dims.keys()]
+        partial = (composite == "partial data") or len(dims) < 4
+
         if audience == "athlete":
             if not problem_dims:
-                wellness_text = "You are feeling good — sleep, energy, soreness, and mood all look normal."
+                if not monitored:
+                    wellness_text = (
+                        "No wellness data was recorded this period."
+                    )
+                elif partial:
+                    wellness_text = (
+                        f"What we tracked ({', '.join(monitored)}) looks "
+                        f"normal — though monitoring was limited this period."
+                    )
+                else:
+                    wellness_text = (
+                        f"You are feeling good — {', '.join(monitored)} "
+                        f"all look normal."
+                    )
             elif len(problem_dims) == 1:
                 dim, data = problem_dims[0]
                 dim_plain = dim.replace("_", " ")
@@ -485,10 +551,21 @@ class TemplateMixer:
                 )
         else:
             if not problem_dims:
-                wellness_text = (
-                    "All wellness dimensions within normal range. "
-                    "Composite status: good."
-                )
+                if not monitored:
+                    wellness_text = (
+                        "No wellness data available this period."
+                    )
+                elif partial:
+                    wellness_text = (
+                        f"Monitored dimensions "
+                        f"({', '.join(monitored)}) within normal range. "
+                        f"Coverage is partial this period."
+                    )
+                else:
+                    wellness_text = (
+                        "All monitored wellness dimensions within normal "
+                        "range. Composite status: good."
+                    )
             else:
                 dim_list = ", ".join([
                     f"{d[0].replace('_',' ')} "
@@ -518,6 +595,24 @@ class TemplateMixer:
             audience,
             oc.replace("_", " ").title()
         )
+ 
+        # OC_LANGUAGE is a flat label -> phrase table with no awareness of the
+        # detected signals. In override scenarios that produces a direct
+        # self-contradiction: this section asserts the label's canned phrasing
+        # while SIGNAL INTEGRATION documents the opposite.
+        #
+        # REPLACE rather than append. Appending leaves the false statement
+        # standing -- "your body is handling training well" is not made true
+        # by a following explanation when HRV has been critically suppressed
+        # for seven days. The rationale states the same clinical conclusion
+        # (this is expected, not overreaching) without the false claim.
+        #
+        # Requires Edit 1 (populates synthesis["scenario_rationale"]).
+        rationale = (
+            synthesis.get("scenario_rationale", {}) or {}
+        ).get(audience, [])
+        if rationale:
+            oc_text = rationale[0]
 
         conf_note = ""
         if confidence not in ["high"] and \
@@ -588,7 +683,7 @@ class TemplateMixer:
             # Tier 3 — use conditional recommendations
             for cr in conditional_recs[:2]:
                 recs.append(
-                    f"• IF {cr['condition']}: "
+                    f"• {cr['condition'][0].upper() + cr['condition'][1:]}: "
                     f"{cr['action']} — "
                     f"signal to watch: {cr['signal']}"
                 )
