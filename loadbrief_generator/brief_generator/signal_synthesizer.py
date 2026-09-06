@@ -6,7 +6,34 @@
 
 from typing import Dict, List, Optional
 
+from conflict_rationale import get_rationale
 
+IMPLICATION_PROSE = {
+    "athlete_may_be_adapting_well":
+        "the athlete may be adapting well despite the mixed signals",
+    "non_training_stressor_likely":
+        "a non-training stressor is the likely cause",
+    "subclinical_fatigue_athlete_unaware":
+        "subclinical fatigue the athlete may not yet perceive",
+    "psychological_or_contextual_stressor":
+        "a psychological or contextual stressor rather than training load",
+}
+
+REC_SEVERITY = {
+    "no_change": 0,
+    "increase_load_gradually": 0,
+    "monitor_closely": 1,
+    "load_reduction_moderate": 2,
+    "load_reduction_significant": 3,
+    "rest_and_recovery": 4,
+    "medical_review": 5,
+}
+CLASS_REC_CEILING = {
+    "normal_adaptation":           "load_reduction_significant",
+    "functional_overreaching":     "rest_and_recovery",
+    "non_functional_overreaching": "medical_review",
+    "overtraining_syndrome":       "medical_review",
+}
 class SignalSynthesizer:
     """
     Synthesizes multi-signal athlete monitoring data into a
@@ -36,7 +63,7 @@ class SignalSynthesizer:
         """
         # Step 1: Detect signal agreement or conflict
         signal_state = self._detect_signal_state(
-            acwr_metrics, hrv_analysis, wellness_analysis
+            acwr_metrics, hrv_analysis, wellness_analysis, scenario_config
         )
 
         # Step 2: Route to appropriate interpreter
@@ -70,16 +97,45 @@ class SignalSynthesizer:
         # Step 4: Build the synthesis narrative paragraph
         interpretation["synthesis_narrative"] = \
             self._build_synthesis_narrative(
-                interpretation, signal_state
+                interpretation, signal_state,
+                scenario_config.risk_level
             )
+        declared = getattr(scenario_config, "signal_conflicts", []) or []
+        interpretation["scenario_rationale"] = {
+            aud: get_rationale(declared, aud)
+            for aud in ("athlete", "coach", "sports_scientist")
+        }
 
         # Step 5: Carry forward ground truth labels
+        #
+        # Capture the SIGNAL-derived recommendation before the declared label
+        # overwrites overall_risk — we need both to reconcile them.
+        signal_rec = interpretation.get("recommendation_category", "no_change")
+
         interpretation["overreaching_class"] = \
             scenario_config.overreaching_class
         interpretation["risk_level"] = \
             scenario_config.risk_level
         interpretation["overall_risk"] = \
             scenario_config.risk_level.split("_")[0]
+
+        declared_rec = self._map_risk_to_rec(
+            scenario_config.risk_level,
+            acwr_metrics.get("zone", "sweet_spot"),
+            hrv_analysis.get("consecutive_suppressed_days", 0),
+        )
+        # Whichever is MORE conservative wins. Declared listed first so it wins
+        # ties (max returns the first maximal element).
+        rec = max(
+            declared_rec, signal_rec,
+            key=lambda r: REC_SEVERITY.get(r, 0),
+        )
+        ceiling = CLASS_REC_CEILING.get(
+            scenario_config.overreaching_class, "medical_review")
+        if REC_SEVERITY.get(rec, 0) > REC_SEVERITY.get(ceiling, 5):
+            rec = ceiling
+
+        interpretation["recommendation_category"] = rec
 
         return interpretation
 
@@ -88,7 +144,8 @@ class SignalSynthesizer:
     def _detect_signal_state(self,
                               acwr_metrics: Dict,
                               hrv_analysis: Dict,
-                              wellness_analysis: Dict) -> Dict:
+                              wellness_analysis: Dict,
+                              scenario_config=None) -> Dict:
         """
         Detect whether monitoring signals agree or conflict.
         Returns a state dict describing any conflicts found.
@@ -130,18 +187,26 @@ class SignalSynthesizer:
         # ── Conflict Type 2 ──────────────────────────────────────────
         # Normal ACWR but poor physiology
         # Non-training stressor is likely the cause
-        if (acwr_zone in ["sweet_spot", "undertraining",
-                           "caution"] and
+        if (acwr_zone in ["sweet_spot", "undertraining"] and
                 hrv_available and
                 hrv_status in ["significantly_suppressed",
                                "critically_suppressed"] and
                 wellness_available and
                 wellness_status in ["moderately_depressed",
-                                    "severely_depressed"]):
+                                    "severely_depressed"] and
+                getattr(scenario_config, "overreaching_class", "")
+                    != "overtraining_syndrome"):
+            if acwr_zone == "undertraining":
+                load_phrase = "Training load is low"
+            elif acwr_zone == "caution":
+                load_phrase = "Training load is elevated"
+            else:
+                load_phrase = "Training load is within acceptable range"
+
             conflicts.append({
                 "type": "normal_load_poor_physiology",
                 "description": (
-                    "Training load is within acceptable range but "
+                    f"{load_phrase} but "
                     "HRV is suppressed and wellness is depressed — "
                     "a non-training stressor is likely responsible"
                 ),
@@ -236,6 +301,12 @@ class SignalSynthesizer:
             risk_signals.append("load_approaching_threshold")
         elif acwr_zone == "undertraining":
             risk_signals.append("load_too_low")
+
+        monotony = acwr_metrics.get("monotony", 0)
+        if monotony >= 2.5:
+            risk_signals.append("monotony_high")
+        elif monotony >= 2.0:
+            risk_signals.append("monotony_elevated")
 
         if hrv_available and hrv_status in [
             "significantly_suppressed", "critically_suppressed"
@@ -353,7 +424,7 @@ class SignalSynthesizer:
             "complexity_tier": 2,
             "all_conflicts": conflicts,
             "conditional_recommendations": self._build_conditional_recs(
-                [conflict]
+                [conflict], acwr_metrics.get("zone", "sweet_spot")
             ),
             "recommendation_category": self._map_risk_to_rec(
                 scenario_config.risk_level.split("_")[0],
@@ -377,7 +448,8 @@ class SignalSynthesizer:
         # Already sorted by priority
         primary_conflict = conflicts[0]
 
-        conditional_recs = self._build_conditional_recs(conflicts)
+        conditional_recs = self._build_conditional_recs(
+            conflicts, acwr_metrics.get("zone", "sweet_spot"))
 
         return {
             "signal_agreement": "conflicting",
@@ -404,7 +476,8 @@ class SignalSynthesizer:
     # ── Conditional Recommendation Builder ───────────────────────────
 
     def _build_conditional_recs(self,
-                                  conflicts: List) -> List[Dict]:
+                                  conflicts: List,
+                                  acwr_zone: str = "sweet_spot") -> List[Dict]:
         """
         Build IF/THEN conditional recommendations for conflicting signals.
         Each conflict type maps to a pair of conditional recommendations.
@@ -427,11 +500,23 @@ class SignalSynthesizer:
                 })
 
             elif ctype == "normal_load_poor_physiology":
-                recs.append({
-                    "condition": "if non-training stressor identified",
-                    "action": "maintain training load, address the stressor directly",
-                    "signal": "HRV and wellness should respond within 48-72 hours"
-                })
+                # "Maintain training load" is correct when the load is
+                # genuinely normal, but dangerous when the zone is
+                # undertraining — in the depleted OTS presentation the low
+                # load IS the symptom, and maintaining it delays recovery.
+                if acwr_zone == "undertraining":
+                    recs.append({
+                        "condition": "if non-training stressor identified",
+                        "action": ("address the stressor directly; do not "
+                                   "increase load until recovery markers turn"),
+                        "signal": "HRV and wellness should respond within 48-72 hours"
+                    })
+                else:
+                    recs.append({
+                        "condition": "if non-training stressor identified",
+                        "action": "maintain training load, address the stressor directly",
+                        "signal": "HRV and wellness should respond within 48-72 hours"
+                    })
                 recs.append({
                     "condition": "if no stressor identified after investigation",
                     "action": "reduce load 20% as precaution",
@@ -439,11 +524,24 @@ class SignalSynthesizer:
                 })
 
             elif ctype == "hrv_suppressed_wellness_good":
-                recs.append({
-                    "condition": "given subclinical fatigue pattern",
-                    "action": "reduce next session intensity to RPE ≤ 6",
-                    "signal": "monitor whether subjective state deteriorates to match HRV"
-                })
+                # Reducing intensity is right when load is normal or high, but
+                # counterproductive at an undertraining ratio — the athlete is
+                # already under-loaded, and cutting further deepens it. 1,721
+                # briefs recommended a reduction at ACWR ~0.45.
+                if acwr_zone == "undertraining":
+                    recs.append({
+                        "condition": "given subclinical fatigue pattern",
+                        "action": ("hold load steady and investigate recovery "
+                                   "quality before progressing; do not reduce "
+                                   "further"),
+                        "signal": "monitor whether subjective state deteriorates to match HRV"
+                    })
+                else:
+                    recs.append({
+                        "condition": "given subclinical fatigue pattern",
+                        "action": "reduce next session intensity to RPE ≤ 6",
+                        "signal": "monitor whether subjective state deteriorates to match HRV"
+                    })
 
             elif ctype == "hrv_normal_wellness_poor":
                 recs.append({
@@ -504,7 +602,8 @@ class SignalSynthesizer:
 
     def _build_synthesis_narrative(self,
                                     interpretation: Dict,
-                                    signal_state: Dict) -> str:
+                                    signal_state: Dict,
+                                    risk_level: str = "low") -> str:
         """
         Builds the signal integration narrative paragraph.
         This becomes the SIGNAL INTEGRATION section of the brief.
@@ -518,10 +617,23 @@ class SignalSynthesizer:
                           if "too_low" not in s])
 
             if n_risk == 0:
+                # risk_signals counts only threshold crossings, so it can be
+                # empty while the scenario still carries elevated risk. An
+                # absolute all-clear then contradicts the brief's own risk
+                # header — the defect this guard prevents.
+                if (risk_level or "").split("_")[0] in (
+                        "moderate", "high", "critical"):
+                    return (
+                        "No individual monitoring signal has crossed its "
+                        "threshold, but the overall picture warrants "
+                        "continued attention rather than reassurance."
+                    )
+                # Scoped to what was MONITORED rather than an absolute
+                # completeness claim — under reduced data levels the brief
+                # cannot honestly assert that every signal is normal.
                 return (
-                    "All monitoring signals are within normal ranges "
-                    "and trending positively. Training load is well "
-                    "tolerated and recovery appears adequate."
+                    "No monitored signal has crossed its threshold. Training "
+                    "load appears well tolerated with adequate recovery."
                 )
             elif n_risk == 1:
                 signal = risk_signals[0].replace("_", " ")
@@ -531,12 +643,32 @@ class SignalSynthesizer:
                     f"Other signals remain within acceptable ranges."
                 )
             elif n_risk == 2:
+                # Name the signals that ACTUALLY flagged. The previous version
+                # hardcoded "load and physiological recovery", false whenever
+                # the two flagged signals were e.g. HRV + wellness (load fine).
+                flagged = [s for s in risk_signals if "too_low" not in s]
+                label = {
+                    "load_elevated": "training load",
+                    "load_approaching_threshold": "training load",
+                    "hrv_suppressed": "physiological recovery",
+                    "hrv_mildly_suppressed": "physiological recovery",
+                    "wellness_depressed": "subjective wellness",
+                    "wellness_mildly_depressed": "subjective wellness",
+                    "monotony_high": "training monotony",
+                    "monotony_elevated": "training monotony",
+                }
+                named = []
+                for s in flagged:
+                    n = label.get(s, s.replace("_", " "))
+                    if n not in named:
+                        named.append(n)
+                pair = (" and ".join(named) if len(named) == 2
+                        else "two monitoring signals")
                 return (
-                    "Two monitoring signals are simultaneously "
-                    "indicating elevated fatigue — load and "
-                    "physiological recovery are both showing stress. "
-                    "Combined signal elevation is more concerning than "
-                    "either signal would be in isolation."
+                    f"Two monitoring signals are simultaneously indicating "
+                    f"elevated fatigue — {pair} are both showing stress. "
+                    f"Combined signal elevation is more concerning than "
+                    f"either signal would be in isolation."
                 )
             else:
                 return (
@@ -554,7 +686,7 @@ class SignalSynthesizer:
                 f"Monitoring signals show a notable discrepancy: "
                 f"{conflict['description']}. "
                 f"This pattern suggests "
-                f"{conflict['implication'].replace('_', ' ')}. "
+                f"{IMPLICATION_PROSE.get(conflict['implication'], conflict['implication'].replace('_', ' '))}. "
                 f"Recommended interpretation: "
                 f"{conflict['action'].replace('_', ' ')}."
             )
