@@ -31,9 +31,9 @@ os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
 os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = "0.0"
 
 BASE_MODEL     = "meta-llama/Meta-Llama-3-8B-Instruct"
-SFT_CHECKPOINT = "./sft_checkpoint_final"
-TEST_DATA      = "./formatted/sft_test.jsonl"
-OUTPUT_DIR     = "./baseline_outputs"
+SFT_CHECKPOINT = "./sft_checkpoint_v8_final"
+TEST_DATA      = "./formatted_v8/sft_test.jsonl"
+OUTPUT_DIR     = "./baseline_outputs_v8"
 N_EXAMPLES     = 500   # how many test examples to generate for
 
 
@@ -65,7 +65,7 @@ def generate_one(model, tokenizer, prompt, max_new_tokens=400):
         outputs = model.generate(
             **inputs,
             max_new_tokens=max_new_tokens,
-            do_sample=True,
+            do_sample=False,
             temperature=0.7,
             top_p=0.95,
             pad_token_id=tokenizer.eos_token_id,
