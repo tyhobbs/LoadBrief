@@ -85,7 +85,9 @@ SCENARIO_ILLNESS_RETURN = ScenarioConfig(
     complexity_tier=2, acwr_trajectory="undefined_then_spiking",
     acwr_target_final=(1.2, 1.8), hrv_pattern="recovering_but_variable",
     wellness_pattern="improving_but_fragile", load_pattern="graduated_return_from_zero",
-    conflicting_signals=False, signal_conflicts=[],
+    conflicting_signals=True,
+    signal_conflicts=["acwr_inflated_by_depleted_chronic_load",
+                      "graduated_return_expected_ratio_elevation"],
     risk_level="moderate", overreaching_class="normal_adaptation",
     special_parameters={"illness_days": (5, 14), "illness_type": ["upper_respiratory", "gastrointestinal", "flu_like", "general_viral"]}
 )
@@ -103,7 +105,9 @@ SCENARIO_ALTITUDE = ScenarioConfig(
     complexity_tier=2, acwr_trajectory="moderate_maintained",
     acwr_target_final=(0.9, 1.3), hrv_pattern="altitude_suppression_then_adapting",
     wellness_pattern="altitude_stress_then_improving", load_pattern="reduced_intensity_maintained_volume",
-    conflicting_signals=False, signal_conflicts=[],
+     conflicting_signals=True,
+    signal_conflicts=["hypoxic_suppression_not_training_load",
+                      "low_load_but_altitude_physiological_cost"],
     risk_level="moderate", overreaching_class="normal_adaptation",
     special_parameters={"altitude_meters": (1800, 3000), "days_at_altitude": (7, 21)}
 )
@@ -119,7 +123,7 @@ SCENARIO_WELLNESS_CRASH = ScenarioConfig(
 SCENARIO_HIGH_ACWR_STABLE = ScenarioConfig(
     name="high_acwr_stable_physiology", description="High ACWR but stable HRV/wellness.",
     complexity_tier=3, acwr_trajectory="elevated_sustained",
-    acwr_target_final=(1.5, 1.8), hrv_pattern="stable_despite_high_acwr",
+    acwr_target_final=(1.4, 1.6), hrv_pattern="stable_despite_high_acwr",
     wellness_pattern="normal_despite_high_acwr", load_pattern="high_but_athlete_tolerating",
     conflicting_signals=True, signal_conflicts=["acwr_danger_but_hrv_normal", "acwr_danger_but_wellness_stable"],
     risk_level="moderate", overreaching_class="functional_overreaching",
@@ -128,16 +132,18 @@ SCENARIO_HIGH_ACWR_STABLE = ScenarioConfig(
 SCENARIO_EARLY_OVERREACHING = ScenarioConfig(
     name="early_overreaching", description="Sustained elevated load for 2-3 weeks.",
     complexity_tier=3, acwr_trajectory="sustained_elevated_multiweek",
-    acwr_target_final=(1.3, 1.7), hrv_pattern="progressively_suppressing_multiweek",
+    acwr_target_final=(0.9, 1.2), hrv_pattern="progressively_suppressing_multiweek",
     wellness_pattern="progressively_declining_multiweek", load_pattern="consistently_high_multiweek",
-    conflicting_signals=False, signal_conflicts=[],
+    conflicting_signals=True,
+    signal_conflicts=["acwr_normal_but_sustained_accumulation",
+                      "load_acceptable_but_hrv_suppressed"],
     risk_level="high", overreaching_class="non_functional_overreaching",
     special_parameters={"weeks_elevated": (2, 3)}
 )
 SCENARIO_OTS = ScenarioConfig(
     name="overtraining_syndrome", description="Overtraining syndrome markers.",
     complexity_tier=3, acwr_trajectory="chronically_elevated_then_declining_performance",
-    acwr_target_final=(0.8, 1.3), hrv_pattern="chronically_suppressed",
+    acwr_target_final=(0.45, 0.65), hrv_pattern="chronically_suppressed",
     wellness_pattern="severely_depressed_all_dimensions", load_pattern="chronically_elevated_then_declining_performance",
     conflicting_signals=True, signal_conflicts=["acwr_now_normal_but_ots_markers_present", "load_reduced_but_performance_still_declining"],
     risk_level="critical", overreaching_class="overtraining_syndrome",
@@ -175,7 +181,8 @@ SCENARIO_HEAT = ScenarioConfig(
     complexity_tier=3, acwr_trajectory="reduced_intensity_heat",
     acwr_target_final=(0.8, 1.2), hrv_pattern="heat_cardiovascular_suppression",
     wellness_pattern="heat_stress_response", load_pattern="reduced_intensity_maintained_volume",
-    conflicting_signals=True, signal_conflicts=["low_load_intensity_but_high_physiological_cost", "environmental_not_training_cause"],
+    conflicting_signals=True, signal_conflicts=["environmental_not_training_cause",
+                      "low_load_intensity_but_high_physiological_cost"],
     risk_level="moderate", overreaching_class="normal_adaptation",
     special_parameters={"temperature_celsius": (32, 42), "humidity_percent": (60, 95), "acclimatization_day": (1, 14)}
 )
