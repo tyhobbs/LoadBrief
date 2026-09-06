@@ -143,7 +143,10 @@ class TimeSeriesSimulator:
         for day_idx in range(n_days):
             week = day_idx // 7
             day_of_week = day_idx % 7
-            is_training_day = (day_of_week < training_days)
+            if scenario.load_pattern == "constant_daily_identical":
+                is_training_day = True
+            else:
+                is_training_day = (day_of_week < training_days)
 
             if not is_training_day:
                 loads.append(0.0)
@@ -245,18 +248,17 @@ class TimeSeriesSimulator:
 
     def _pattern_spike_week3(self, base, week,
                               dow, n_weeks, special, td):
-        """Normal → spike in week 3 → maintained high"""
-        if week == 0:
-            return base * 1.0
-        elif week == 1:
-            return base * 1.05
-        elif week == 2:
-            spike = special.get("spike_magnitude", (1.8, 2.2))
-            mag = random.uniform(*spike) if isinstance(
-                spike, tuple) else spike
-            return base * mag
-        else:
-            return base * 1.5  # maintained high
+        """Normal baseline, then a spike in the FINAL week.
+
+        ACWR is 7-day acute over 28-day chronic, so a spike in week 2 has
+        already washed into the chronic window by day 28 — it produced ACWR
+        ~1.08 in every one of 2,860 samples, never the declared 1.5-2.0.
+        """
+        if week < n_weeks - 1:
+            return base * random.uniform(0.95, 1.05)
+        spike = special.get("spike_magnitude", (1.8, 2.2))
+        mag = random.uniform(*spike) if isinstance(spike, tuple) else spike
+        return base * mag
 
     def _pattern_taper(self, base, week,
                         dow, n_weeks, special, td):
@@ -266,21 +268,30 @@ class TimeSeriesSimulator:
 
     def _pattern_consistently_low(self, base, week,
                                    dow, n_weeks, special, td):
-        """Detraining — load consistently low"""
-        return base * random.uniform(0.35, 0.55)
+        """Detraining — load declining below the established chronic base.
+
+        A uniformly low multiplier shrinks both windows together, leaving
+        ACWR near 1.0. Reaching the declared band requires recent load to
+        fall below the 28-day mean.
+        """
+        return base * max(0.25, 1.0 - week * 0.28)
 
     def _pattern_flat_low(self, base, week,
                            dow, n_weeks, special, td):
-        """Flat low — undertraining"""
-        return base * random.uniform(0.4, 0.65)
+        """Undertraining — same declining shape (see above)."""
+        return base * max(0.25, 1.0 - week * 0.28)
 
     def _pattern_monotony(self, base, week,
                            dow, n_weeks, special, td):
+        """Trains every day with moderate day-to-day variation.
+
+        Foster's monotony = mean/SD over 7 days. Near-identical daily loads
+        (the previous ±5%) give SD ~0 and monotony ~35 — physiologically
+        absurd. Realistic monotony of 2.5-4.0 comes from training every day
+        (no rest-day zeros inflating SD) with moderate variation. For
+        uniform(1-a, 1+a), monotony ~= sqrt(3)/a, so a=0.55 -> ~3.1.
         """
-        Same load every day — high monotony.
-        Minimal daily variation deliberately.
-        """
-        return base * random.uniform(0.95, 1.05)  # tiny variation
+        return base * random.uniform(0.45, 1.55)
 
     def _pattern_normal_consistent(self, base, week,
                                     dow, n_weeks, special, td):
@@ -291,8 +302,14 @@ class TimeSeriesSimulator:
 
     def _pattern_high_tolerating(self, base, week,
                                   dow, n_weeks, special, td):
-        """Elevated but tolerated — athlete handling high load"""
-        return base * random.uniform(1.4, 1.7)
+        """Elevated and rising — athlete handling a progressive build.
+
+        A uniform 1.4-1.7x multiplier raised acute and chronic together,
+        leaving ACWR near 1.0 in all 1,727 samples against a declared
+        1.5-1.8 target. Reaching that band requires recent load to exceed
+        the 28-day mean, so the build has to progress across the block.
+        """
+        return base * min(3.6, 1.0 + week * 0.85)
 
     def _pattern_illness_return(self, base, week,
                                  dow, n_weeks, special, td):
@@ -322,16 +339,23 @@ class TimeSeriesSimulator:
 
     def _pattern_post_competition(self, base, week,
                                    dow, n_weeks, special, td):
-        """Post-match — very low load for several days"""
+        """Match, then a recent recovery dip.
+
+        The dip previously sat in the first few days and load returned to
+        near-baseline, leaving acute above chronic by day 28 (ACWR ~1.12
+        against a declared 0.6-0.9). The dip has to land in the acute window
+        — but not so deep that the ratio undershoots.
+        """
         days_post = special.get("days_post_match", (1, 4))
         if isinstance(days_post, tuple):
             days_post = _safe_randint(*days_post)
-
         total_day = week * 7 + dow
-        if total_day < days_post:
-            return base * random.uniform(0.1, 0.25)
-        else:
-            return base * random.uniform(0.7, 1.0)
+        n_days = n_weeks * 7
+        if total_day >= n_days - days_post:
+            return base * random.uniform(0.25, 0.45)
+        if total_day >= n_days - 7:
+            return base * random.uniform(0.6, 0.85)
+        return base * random.uniform(0.95, 1.05)
 
     def _pattern_fixture_congestion(self, base, week,
                                      dow, n_weeks, special, td):
@@ -340,12 +364,12 @@ class TimeSeriesSimulator:
         and minimal training between.
         """
         matches_per_week = special.get("matches_per_week", 2)
-        if isinstance(matches_per_week, tuple): matches_per_week = _safe_randint(*matches_per_week)
-        # Match days get high load, other days very low
+        if isinstance(matches_per_week, tuple):
+            matches_per_week = _safe_randint(*matches_per_week)
+        ramp = 1.0 + week * 0.18
         if dow in range(matches_per_week):
-            return base * random.uniform(1.5, 2.0)  # match load
-        else:
-            return base * random.uniform(0.15, 0.35)  # recovery
+            return base * random.uniform(1.5, 2.0) * ramp
+        return base * random.uniform(0.15, 0.35) * ramp
 
     def _pattern_altitude(self, base, week,
                            dow, n_weeks, special, td):
@@ -393,15 +417,19 @@ class TimeSeriesSimulator:
 
     def _pattern_double_sessions(self, base, week,
                                   dow, n_weeks, special, td):
-        """
-        Double sessions on some days.
-        Total daily load higher but split across two sessions.
+        """Double-session days, accumulating across the block.
+
+        A fixed weekly shape repeated four times leaves acute ~= chronic and
+        ACWR ~= 1.0 — the declared 1.2-1.6 was unreachable. Density has to
+        build for the recent week to exceed the 28-day mean.
         """
         double_days = special.get("double_days_per_week", 3)
-        if isinstance(double_days, tuple): double_days = _safe_randint(*double_days)
+        if isinstance(double_days, tuple):
+            double_days = _safe_randint(*double_days)
+        ramp = 1.0 + week * 0.22
         if dow < double_days:
-            return base * random.uniform(1.6, 2.0)
-        return base * random.uniform(0.8, 1.1)
+            return base * random.uniform(1.6, 2.0) * ramp
+        return base * random.uniform(0.8, 1.1) * ramp
 
     def _pattern_travel(self, base, week,
                          dow, n_weeks, special, td):
