@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=double_session_accumulation  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=7 act=7 clar=7]  The brief demonstrates excellent clinical reasoning, provides specific and actionable recommendations, and is presented with professional clarity.
+  [clin=6 act=7 clar=7]  The brief demonstrates strong clinical reasoning, particularly in identifying the recovery deficit despite a moderate ACWR.
+  [clin=6 act=5 clar=7]  While the recommendations are clear, the actionability could be improved with more specific guidance on the 'gradual return' phase.
+  [clin=6 act=5 clar=7]  While the recommendations are clear, they lack specific quantitative details for active recovery protocols.
+  [clin=6 act=7 clar=7]  The brief demonstrates strong clinical reasoning, particularly in its nuanced interpretation of ACWR in the context of other fatigue markers.
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but could be improved by explicitly linking the shoulder injury history to specific load management recommend
+  [clin=6 act=6 clar=7]  The recommendation for 3-5 days complete rest is a strong intervention, but the 'gradual return if markers normalise' could be slightly more specific 
+  [clin=6 act=7 clar=7]  The brief demonstrates strong clinical reasoning, particularly in integrating multiple signals to identify a recovery deficit despite healthy aggregat
+  [clin=6 act=6 clar=7]  The load reduction recommendation is strong, but could be more nuanced regarding specific session types or drills to reduce.
+  [clin=6 act=5 clar=7]  While the recommendations are clear, the immediate suspension of training might be an overly aggressive first step given the 'moderate' risk classific
+
+======================================================================
+  Ground-truth double_session_accumulation clinical accuracy: mean 6.10  dist {6: 9, 7: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/double_session_accumulation__sports_scientist__gemini.jsonl

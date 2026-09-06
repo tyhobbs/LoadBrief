@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=heat_acclimatization  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=5 clar=6]  The brief misinterprets the HRV suppression as solely due to thermoregulatory load, despite the input indicating non-functional overreaching and an im
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation to reduce intensity to RPE ≤ 6 could be more specific regarding duration or type of se
+  [clin=6 act=6 clar=7]  The brief's interpretation of HRV suppression as 'non-functional overreaching' in the input, but then attributing it solely to thermoregulatory demand
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation for a 40-50% load reduction might be too aggressive given the improving HRV trend and 
+  [clin=6 act=6 clar=7]  The brief's interpretation of HRV suppression and overreaching classification is generally sound, but the 'improving' trend for HRV is not explicitly 
+  [clin=6 act=6 clar=7]  The brief's interpretation of HRV suppression as solely due to thermoregulatory load, rather than a combination of heat and training stress, slightly 
+  [clin=6 act=5 clar=7]  While the recommendations are clear, they lack specific quantitative guidance for immediate application beyond 'daily tracking should be maintained'.
+  [clin=3 act=6 clar=7]  The brief's classification of overreaching is clinically inaccurate, misattributing HRV suppression solely to thermoregulatory load and dismissing sta
+  [clin=7 act=6 clar=7]  The recommendation to reduce intensity to RPE ≤ 6 is good, but could be more specific regarding duration or type of activity.
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is high, but the recommendation to 'maintain current load' could be slightly more nuanced given the heat stress and phys
+
+======================================================================
+  Ground-truth heat_acclimatization clinical accuracy: mean 5.50  dist {3: 2, 6: 7, 7: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/heat_acclimatization__sports_scientist__gemini.jsonl

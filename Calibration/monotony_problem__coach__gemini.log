@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=monotony_problem  audience=coach  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=4 clar=6]  The AI's clinical classification of functional overreaching directly contradicts the undertraining ACWR and good wellness, making the load reduction r
+  [clin=6 act=7 clar=7]  The brief's clinical classification of functional overreaching is a reasonable interpretation of the combined signals, though the HRV dip is moderate 
+  [clin=6 act=6 clar=7]  The brief is very good, but the recommendation to reduce intensity to RPE <= 6 could be more specific regarding duration or type of activity.
+  [clin=6 act=6 clar=7]  The clinical accuracy is strong, but the classification of 'functional overreaching' might be slightly premature given the mild HRV suppression and go
+  [clin=3 act=4 clar=6]  The clinical classification of 'functional overreaching' is premature and not fully supported by the provided data, especially given the good subjecti
+  [clin=5 act=6 clar=7]  The clinical classification of functional overreaching is questionable given the high monotony and HRV dip, suggesting a need for more nuanced interpr
+  [clin=2 act=6 clar=7]  The clinical classification of functional overreaching is questionable given the ACWR and wellness data, and the recommended load reduction seems disp
+  [clin=2 act=3 clar=6]  The brief misinterprets several key monitoring signals, leading to an inaccurate clinical classification and inappropriate recommendations.
+  [clin=3 act=4 clar=6]  The classification of 'Functional overreaching' is questionable given the good wellness and improving HRV trend, suggesting the fatigue signals might 
+  [clin=6 act=6 clar=7]  The brief is generally strong, but the monotony index, a high-risk signal, was not explicitly integrated into the risk level or recommendations, which
+
+======================================================================
+  Ground-truth monotony_problem clinical accuracy: mean 4.10  dist {2: 3, 3: 2, 5: 1, 6: 4}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/monotony_problem__coach__gemini.jsonl

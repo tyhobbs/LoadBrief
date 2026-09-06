@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=early_overreaching  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=6 clar=7]  The brief's interpretation of the ACWR in the context of sustained elevated load and other declining markers is a strong point, demonstrating nuanced 
+  [clin=7 act=7 clar=7]  All aspects of the brief are well-reasoned, actionable, and clearly presented.
+  [clin=7 act=7 clar=7]  The brief demonstrates excellent clinical reasoning, provides specific and actionable recommendations, and is exceptionally clear and well-organized.
+  [clin=7 act=7 clar=7]  The AI-generated brief demonstrates excellent clinical reasoning, provides specific and actionable recommendations, and is presented with professional
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation to maintain training load if a non-training stressor is identified might be too aggres
+  [clin=6 act=6 clar=7]  The brief's interpretation of ACWR in the context of sustained elevated load and converging signals is a strong point, demonstrating nuanced clinical 
+  [clin=6 act=6 clar=7]  The brief's interpretation of ACWR in the context of sustained elevated load and other declining markers is a sophisticated and clinically accurate po
+  [clin=7 act=7 clar=7]  All scores are high, indicating a well-reasoned, actionable, and clear brief.
+  [clin=2 act=5 clar=6]  The AI's overall risk classification of 'HIGH' and subsequent recommendations are not supported by the provided monitoring data, which indicates an AC
+  [clin=7 act=7 clar=7]  The brief demonstrates excellent clinical reasoning, provides specific and actionable recommendations, and is exceptionally clear and well-organized.
+
+======================================================================
+  Ground-truth early_overreaching clinical accuracy: mean 6.10  dist {2: 1, 6: 4, 7: 5}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/early_overreaching__sports_scientist__gemini.jsonl

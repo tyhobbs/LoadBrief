@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=monotony_problem  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=4 clar=5]  The AI's interpretation of the monitoring data is contradictory and misdiagnoses the athlete's status, indicating poor clinical accuracy.
+  [clin=3 act=6 clar=6]  The brief misinterprets the athlete's status, incorrectly classifying early overtraining based on the provided data.
+  [clin=3 act=6 clar=7]  The brief misinterprets the ACWR and overstates the risk of overtraining based on the provided data, especially given the high monotony.
+  [clin=3 act=6 clar=6]  The brief misinterprets the data, jumping to 'early overtraining signs' when the acute:chronic ratio is good and wellness is normal, despite the monot
+  [clin=2 act=3 clar=6]  The brief misinterprets the monitoring data, incorrectly classifying the athlete as showing 'early overtraining signs' despite a healthy ACWR and good
+  [clin=3 act=5 clar=6]  The brief misinterprets the ACWR and overstates the severity of the athlete's condition based on the provided data, leading to an inaccurate 'early ov
+  [clin=3 act=6 clar=7]  The brief misinterprets the ACWR and overstates the risk of overtraining given the provided data.
+  [clin=2 act=2 clar=4]  The brief contains contradictory statements and misinterprets key physiological signals, leading to inaccurate conclusions and recommendations.
+  [clin=3 act=5 clar=6]  The brief misinterprets the data, incorrectly classifying the athlete as showing 'early overtraining signs' despite good wellness and an improving HRV
+  [clin=3 act=5 clar=6]  The brief misinterprets the ACWR and monotony index, leading to an inaccurate assessment of training load balance and overtraining signs.
+
+======================================================================
+  Ground-truth monotony_problem clinical accuracy: mean 2.70  dist {2: 3, 3: 7}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/monotony_problem__athlete__gemini.jsonl

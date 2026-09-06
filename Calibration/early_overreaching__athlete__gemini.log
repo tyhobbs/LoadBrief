@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=early_overreaching  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=5 clar=6]  The brief misinterprets the ACWR in the context of other strong indicators of overreaching, leading to a potentially harmful conclusion about non-trai
+  [clin=3 act=4 clar=5]  The brief misinterprets the acute:chronic ratio in the context of other suppressed markers, leading to a potentially inaccurate conclusion about non-t
+  [clin=3 act=5 clar=6]  The brief misinterprets the ACWR and sustained elevated load, leading to a potentially inaccurate assessment of training stress.
+  [clin=3 act=5 clar=6]  The brief misinterprets the acute:chronic ratio in the context of other suppressed markers, leading to a potentially misleading conclusion about non-t
+  [clin=2 act=4 clar=5]  The AI's interpretation of the acute:chronic workload ratio and its implications for the athlete's status is clinically inaccurate and potentially mis
+  [clin=3 act=4 clar=6]  The interpretation of ACWR and the conclusion about non-training stressors are clinically inaccurate given the sustained elevated load and suppressed 
+  [clin=3 act=4 clar=5]  The brief's interpretation of the ACWR and the conclusion that training load is 'fine' despite sustained elevated load and depressed wellness is clini
+  [clin=6 act=6 clar=7]  The brief's interpretation of the ACWR as 'well-balanced' despite sustained elevated load and suppressed HRV could be slightly misleading without furt
+  [clin=2 act=6 clar=4]  The AI's interpretation of the athlete's status and the underlying data is contradictory and lacks sound clinical reasoning.
+  [clin=3 act=4 clar=6]  The interpretation of the ACWR and the conclusion that a non-training stressor is 'likely responsible' despite sustained elevated training load for 3 
+
+======================================================================
+  Ground-truth early_overreaching clinical accuracy: mean 3.10  dist {2: 2, 3: 7, 6: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/early_overreaching__athlete__gemini.jsonl

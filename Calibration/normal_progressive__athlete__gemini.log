@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=normal_progressive  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=3 clar=6]  The clinical accuracy is low because the AI misinterprets the HRV data and the overall athlete status, leading to contradictory statements and potenti
+  [clin=3 act=2 clar=5]  The brief's interpretation of the HRV drop as 'slightly low' and 'some fatigue building' while simultaneously stating 'Your body is handling training 
+  [clin=3 act=3 clar=5]  The brief overlooks critical contextual information like prior injury history and the off-season phase, leading to potentially inappropriate recommend
+  [clin=4 act=4 clar=6]  The clinical accuracy is adequate but lacks depth, especially given the taper context and limited wellness data.
+  [clin=2 act=3 clar=5]  The AI's interpretation of HRV and subsequent recommendation to reduce load directly contradicts the provided wellness and workload data, indicating p
+  [clin=3 act=4 clar=6]  The brief misinterprets the HRV data, suggesting 'some fatigue building' while the ACWR indicates well-managed load, leading to contradictory conclusi
+  [clin=3 act=3 clar=6]  The recommendation to reduce training volume by 25% is premature given the overall positive wellness and load metrics, potentially leading to undertra
+  [clin=3 act=3 clar=5]  The brief misinterprets the ACWR and provides recommendations that contradict the athlete's post-season recovery phase.
+  [clin=4 act=4 clar=6]  The clinical accuracy is adequate but could be improved by acknowledging the limitations of the available data more explicitly in the interpretation.
+  [clin=2 act=3 clar=5]  The brief's interpretation of the athlete's status and subsequent recommendations are contradictory and not clinically sound given the input data.
+
+======================================================================
+  Ground-truth normal_progressive clinical accuracy: mean 3.00  dist {2: 2, 3: 6, 4: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/normal_progressive__athlete__gemini.jsonl

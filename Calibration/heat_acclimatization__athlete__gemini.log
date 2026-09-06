@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=heat_acclimatization  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=6 clar=5]  The brief contradicts itself by first identifying non-functional overreaching based on HRV and then dismissing low recovery as an expected response to
+  [clin=3 act=5 clar=6]  The brief's interpretation of HRV and its relationship to heat stress and overreaching is contradictory and potentially misleading, lowering its clini
+  [clin=3 act=5 clar=6]  The brief misinterprets the HRV suppression as 'expected response to training in the heat rather than a sign of overreaching' despite the input explic
+  [clin=3 act=6 clar=6]  The brief contradicts itself by first stating 'MODERATE' status and 'clear signal to rest' due to low HRV, then downplaying it as an 'expected respons
+  [clin=2 act=5 clar=6]  The brief contradicts itself by first stating 'MODERATE' status and 'clear signal to rest' due to HRV, then dismissing it as an 'expected response to 
+  [clin=3 act=5 clar=6]  The brief misinterprets the HRV data and ACWR, leading to a contradictory and potentially misleading assessment of the athlete's status.
+  [clin=5 act=3 clar=6]  The recommendations are too general and lack specific quantitative actions for the coach.
+  [clin=2 act=6 clar=5]  The brief contradicts itself by first stating HRV suppression is a clear signal to rest and then dismissing it as an expected response to heat, which 
+  [clin=2 act=5 clar=6]  The brief misinterprets the HRV suppression as an expected response to heat rather than a critical sign of physiological fatigue, despite acknowledgin
+  [clin=4 act=3 clar=6]  The recommendations are too vague to be directly actionable by a coach.
+
+======================================================================
+  Ground-truth heat_acclimatization clinical accuracy: mean 2.90  dist {2: 4, 3: 4, 4: 1, 5: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/heat_acclimatization__athlete__gemini.jsonl

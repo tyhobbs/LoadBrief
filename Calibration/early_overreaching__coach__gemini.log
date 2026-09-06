@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=early_overreaching  audience=coach  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=6 clar=7]  The brief's interpretation of the ACWR, while ultimately correct in identifying the underlying issue, initially presents it as 'within the optimal tra
+  [clin=7 act=7 clar=7]  All aspects of the brief are exceptionally well-executed, demonstrating excellent clinical reasoning, clear and actionable recommendations, and profes
+  [clin=7 act=7 clar=7]  All scores are high as the brief demonstrates excellent clinical reasoning, provides specific and actionable recommendations, and is exceptionally cle
+  [clin=6 act=6 clar=7]  The brief is very strong, but the recommendation to 'maintain training load' if a non-training stressor is identified might be too aggressive given th
+  [clin=6 act=6 clar=7]  The brief's primary recommendation to maintain training load if a non-training stressor is identified, despite significant physiological and subjectiv
+  [clin=6 act=6 clar=7]  The brief's interpretation of ACWR and the potential for non-training stressors is sound, but the recommendation to maintain training load if a non-tr
+  [clin=7 act=6 clar=7]  The actionability is slightly reduced by the conditional recommendations, requiring a coach to make an initial judgment call before applying a specifi
+  [clin=7 act=7 clar=7]  All scores are high as the brief demonstrates excellent clinical reasoning, provides specific and actionable recommendations, and is exceptionally cle
+  [clin=6 act=7 clar=7]  The brief demonstrates strong clinical reasoning, particularly in its nuanced interpretation of the ACWR and its focus on accumulated load.
+  [clin=6 act=6 clar=7]  The brief's interpretation of the ACWR, while acknowledging the sustained high load, could be slightly more explicit in linking the 'normal' ratio dir
+
+======================================================================
+  Ground-truth early_overreaching clinical accuracy: mean 6.40  dist {6: 6, 7: 4}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/early_overreaching__coach__gemini.jsonl

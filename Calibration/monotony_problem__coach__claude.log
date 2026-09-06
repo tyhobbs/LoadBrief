@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=monotony_problem  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=3 clar=6]  Clinical reasoning is internally contradictory and potentially harmful: it correctly identifies undertraining (ACWR 0.762) yet prescribes a 40-50% loa
+  [clin=3 act=5 clar=6]  Clinical accuracy is weakest: with a healthy ACWR, stable HRV trend, normal wellness, adequate sleep, and off-season status, labeling this functional 
+  [clin=4 act=4 clar=6]  Clinical accuracy is only adequate because the brief entirely omits the flagged high training monotony (4.45) — the most actionable driver of fatigue 
+  [clin=2 act=4 clar=6]  Clinical accuracy is lowest because the brief escalates a mild HRV dip (4.8ms, ~8%) with normal wellness, good readiness, and an optimal ACWR into a d
+  [clin=3 act=3 clar=6]  Clinical reasoning is the weakest element: labeling an isolated HRV dip as 'functional overreaching' is unsupported when ACWR is 0.834 (acute load act
+  [clin=3 act=4 clar=6]  Clinical reasoning is the weakest dimension: the brief uncritically repeats an internally inconsistent HRV delta (69.0 → 53.7ms is a 15.3ms/22% drop, 
+  [clin=3 act=5 clar=6]  Clinical accuracy is weakest: the brief omits the high-risk monotony index (6.46) from its load section and never prescribes the indicated fix — incre
+  [clin=2 act=3 clar=5]  Clinical reasoning is unsound: a 12.7% HRV suppression with a declining trend is labeled 'normal', an unjustified 'functional overreaching' diagnosis 
+  [clin=2 act=3 clar=6]  Clinical accuracy is lowest because the brief overreads the data — it ignores the explicitly improving HRV trend and good wellness, misclassifies a mo
+  [clin=3 act=4 clar=5]  Clinical accuracy is weakest: the brief entirely omits the high-risk monotony index of 3.04 (and its mandate for daily load variation), uncritically r
+
+======================================================================
+  Ground-truth monotony_problem clinical accuracy: mean 2.70  dist {2: 4, 3: 5, 4: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/monotony_problem__coach__claude.jsonl

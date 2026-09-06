@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=normal_progressive  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=4 act=2 clar=6]  The recommendations amount to "maintain current load" and "continue current monitoring" with no quantitative prescription (e.g., sprint volume, high-s
+  [clin=5 act=2 clar=6]  The recommendations amount to generic platitudes ('continue training with heightened monitoring attention', 'continue current monitoring schedule') wi
+  [clin=3 act=2 clar=6]  Actionability is lowest because the recommendations amount to 'proceed as planned' with no quantitative load targets, no knee/shoulder-specific prophy
+  [clin=3 act=2 clar=6]  Actionability is lowest because the only recommendation is a generic 'proceed without modification' with no taper-specific volume/intensity prescripti
+  [clin=2 act=3 clar=4]  Clinical accuracy is lowest because the brief fabricates HRV data absent from the input (and miscalculates its own delta as 4.0ms when 70.5 vs 79.3 is
+  [clin=3 act=4 clar=6]  Clinical accuracy is lowest because the brief internally contradicts itself — classifying the athlete as LOW risk with 'normal adaptation, no overreac
+  [clin=3 act=5 clar=5]  Clinical accuracy is weakest because the brief internally contradicts itself — labeling risk LOW with 'normal adaptation, no overreaching indicators' 
+  [clin=3 act=2 clar=6]  Actionability is lowest because the only recommendation — 'maintain current load' — provides no quantitative targets, session prescriptions, or review
+  [clin=4 act=3 clar=6]  The brief acknowledges that subjective wellness data is missing yet recommends 'no changes required' to monitoring, leaving the coach with no concrete
+  [clin=2 act=3 clar=5]  Clinical accuracy is lowest because the brief is internally contradictory and unsafe as guidance — it labels risk LOW and classifies 'normal adaptatio
+
+======================================================================
+  Ground-truth normal_progressive clinical accuracy: mean 3.20  dist {2: 2, 3: 5, 4: 2, 5: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/normal_progressive__coach__claude.jsonl

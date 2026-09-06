@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=illness_return  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=4 act=4 clar=5]  Clinical accuracy is only adequate because the brief ignores the taper context entirely (an acute load exceeding chronic load during a taper is itself
+  [clin=3 act=5 clar=5]  Clinical accuracy is weakest: the brief internally contradicts itself by calling HRV 'critically suppressed' while assigning only MODERATE risk, and s
+  [clin=3 act=3 clar=5]  Clinical accuracy is weakest: the brief downgrades a convergent high-risk picture (ACWR 1.82 plus 7 consecutive days of markedly suppressed HRV post-i
+  [clin=4 act=4 clar=5]  Clinical reasoning is only adequate: it never reconciles the stated taper phase with a rising acute load (a fundamental contradiction), ignores the re
+  [clin=4 act=3 clar=6]  Actionability is weakest: the sole recommendation to 'continue training with heightened monitoring attention' gives no quantitative load caps, session
+  [clin=3 act=4 clar=5]  Clinical accuracy is weakest: the brief drops the input's explicit non-functional overreaching flag, downplays a post-illness ACWR of 1.79 combined wi
+  [clin=3 act=5 clar=6]  Clinical accuracy is weakest: the HRV delta is misstated (6.6ms vs the actual 3.1ms, ~3%, which is within normal day-to-day variation rather than 'mod
+  [clin=4 act=2 clar=6]  Actionability is weakest: the sole recommendation ('continue training with heightened monitoring attention') offers no quantitative load ceiling, prog
+  [clin=3 act=4 clar=5]  Clinical accuracy is the weakest dimension: the brief pairs an ACWR of 1.94 with 7-day HRV suppression flagged as non-functional overreaching yet rate
+  [clin=3 act=4 clar=5]  Clinical accuracy is lowest because the brief fails to consider post-viral illness as the primary explanation for 7-day HRV suppression (including car
+
+======================================================================
+  Ground-truth illness_return clinical accuracy: mean 3.40  dist {3: 6, 4: 4}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/illness_return__coach__claude.jsonl

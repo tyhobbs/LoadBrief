@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=altitude_camp  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=6 clar=7]  The brief's interpretation of HRV suppression during altitude training as solely acclimatization and not also indicative of training stress could be m
+  [clin=6 act=4 clar=6]  The recommendations are somewhat generic and lack specific quantitative guidance for the coach beyond 'daily tracking' and 'reassess in 3-5 days'.
+  [clin=6 act=6 clar=7]  The brief's confidence in attributing HRV suppression solely to altitude, despite a 7-day run of suppression, could be slightly more nuanced given the
+  [clin=6 act=6 clar=7]  The brief's interpretation of HRV suppression in an altitude context is generally sound, but the recommendation to 'trust HRV over subjective report' 
+  [clin=7 act=6 clar=7]  The actionability is good but could be slightly more specific on the duration or type of intensity reduction beyond just the next session.
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation to 'trust HRV over subjective report' could be nuanced further, especially given the a
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation to reduce intensity to RPE <= 6 could be more nuanced given the altitude context and i
+  [clin=3 act=5 clar=6]  The brief misinterprets the HRV suppression, attributing it solely to altitude acclimatization despite the input explicitly stating it's consistent wi
+  [clin=6 act=5 clar=7]  While the recommendations are clear, they lack specific quantitative guidance for the coach beyond 'daily tracking' and 'reassess in 3-5 days'.
+  [clin=6 act=5 clar=7]  The actionability could be improved with more specific quantitative recommendations for load adjustment, rather than just increased monitoring.
+
+======================================================================
+  Ground-truth altitude_camp clinical accuracy: mean 5.80  dist {3: 1, 6: 8, 7: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/altitude_camp__sports_scientist__gemini.jsonl

@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=normal_progressive  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=5 act=3 clar=6]  The recommendations are vague and contradict the monitoring priorities, making them difficult for a coach to apply directly.
+  [clin=3 act=2 clar=6]  The brief misinterprets the HRV drop as 'mildly suppressed' and 'largely positive' despite it being a significant indicator of early fatigue accumulat
+  [clin=3 act=3 clar=6]  The brief fails to integrate critical prior injury history into its risk classification and recommendations, which is a significant clinical oversight
+  [clin=6 act=5 clar=7]  While the recommendations are clear, they lack specific quantitative actions for the coach to implement beyond 'continue current training plan'.
+  [clin=2 act=3 clar=6]  The AI's recommendation to reduce volume while maintaining intensity directly contradicts the stated ACWR and wellness status, and the HRV suppression
+  [clin=4 act=6 clar=7]  The brief's clinical accuracy is only adequate because it downplays the significance of a declining HRV trend in a post-season recovery phase.
+  [clin=5 act=4 clar=7]  The recommendation to pull back training volume by 25% is a good start, but lacks specificity on how to achieve this (e.g., reduce duration, frequency
+  [clin=6 act=5 clar=7]  While the recommendations are clear, they lack specific quantitative actions for the coach beyond 'continue current training plan'.
+  [clin=6 act=5 clar=7]  While the recommendations are clear, they lack specific quantitative actions for a coach to implement beyond 'no modifications'.
+  [clin=2 act=6 clar=7]  The AI's recommendation for a significant load reduction (40-50% volume, eliminate high-intensity) directly contradicts its 'LOW' overall risk classif
+
+======================================================================
+  Ground-truth normal_progressive clinical accuracy: mean 4.20  dist {2: 2, 3: 2, 4: 1, 5: 2, 6: 3}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/normal_progressive__sports_scientist__gemini.jsonl

@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=acwr_spike  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=5 act=6 clar=7]  While the brief correctly identifies a high-risk state, the conclusion of 'early overtraining signs' and 'a few easy days will resolve this' is an ove
+  [clin=6 act=5 clar=7]  While the recommendations are clear, they lack specific quantitative guidance for 'active recovery protocols' or defining 'a few easy days'.
+  [clin=3 act=5 clar=6]  The brief's classification of 'early overtraining signs' and the recommendation of 'a few easy days' directly contradicts the severity of the presente
+  [clin=5 act=4 clar=6]  The brief's recommendation for 'a few easy days' contradicts the more severe 'training should be suspended' and lacks specific guidance on what 'activ
+  [clin=3 act=6 clar=7]  The brief misinterprets the severity of the athlete's condition, understating the risk of non-functional overreaching and potential overtraining syndr
+  [clin=3 act=3 clar=6]  The brief misinterprets the provided wellness data and makes an unsupported claim about HRV, leading to an inaccurate diagnosis of overtraining.
+  [clin=3 act=5 clar=6]  The brief misinterprets the athlete's status as 'early overtraining signs' and suggests 'a few easy days will resolve this,' which is an oversimplific
+  [clin=3 act=5 clar=4]  The brief misinterprets the available data, particularly regarding the acute:chronic ratio and the conclusion of 'early overtraining signs' based on l
+  [clin=3 act=5 clar=6]  The brief misinterprets 'moderately depressed' from the wellness data and incorrectly classifies the athlete as showing 'early overtraining signs' bas
+  [clin=6 act=5 clar=7]  The actionability could be improved with more specific examples of active recovery protocols or duration.
+
+======================================================================
+  Ground-truth acwr_spike clinical accuracy: mean 4.00  dist {3: 6, 5: 2, 6: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/acwr_spike__athlete__gemini.jsonl

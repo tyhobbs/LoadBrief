@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=illness_return  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=7 act=6 clar=7]  The actionability is good but could be slightly more specific on the duration or type of reduced intensity beyond just the next session.
+  [clin=7 act=6 clar=7]  The recommendation to reduce intensity to RPE ≤ 6 is good, but could be more specific by suggesting a duration or type of session.
+  [clin=7 act=6 clar=7]  The recommendation to reduce intensity to RPE <= 6 is good, but could be more specific regarding duration or type of activity.
+  [clin=7 act=7 clar=7]  The brief demonstrates excellent clinical reasoning, provides specific and actionable recommendations, and is professionally written and easy to under
+  [clin=7 act=6 clar=7]  The actionability is good but could be slightly more quantitative in some recommendations.
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation to reduce intensity to RPE <= 6 could be more specific given the context of a graduate
+  [clin=7 act=6 clar=7]  The actionability is good, but could be slightly more specific by suggesting alternative activities or specific drills to reduce intensity rather than
+  [clin=7 act=6 clar=7]  The actionability is good but could be slightly more specific regarding the 'heightened monitoring attention' beyond just increasing frequency.
+  [clin=7 act=6 clar=7]  The actionability is good but could be slightly more specific regarding the 'reduce next session intensity' recommendation, e.g., by how much or for h
+  [clin=6 act=6 clar=7]  The brief demonstrates strong clinical reasoning, particularly in its nuanced interpretation of the ACWR in the context of a return from illness and t
+
+======================================================================
+  Ground-truth illness_return clinical accuracy: mean 6.80  dist {6: 2, 7: 8}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/illness_return__sports_scientist__gemini.jsonl

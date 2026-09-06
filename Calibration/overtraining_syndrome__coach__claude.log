@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=overtraining_syndrome  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=3 clar=6]  Clinical accuracy is lowest because the brief fabricates data not present in the input (a performance decline 'despite load reduction' and a soreness 
+  [clin=5 act=3 clar=6]  Actionability is weakest: the only recommendation is a single generic bullet ('physician review... alongside training suspension') with no specified d
+  [clin=5 act=3 clar=6]  The core reasoning is sound (correctly reframing the low ACWR as accumulated chronic fatigue rather than detraining), but actionability is weak: the s
+  [clin=5 act=3 clar=6]  Actionability is weakest: the brief offers only a single generic bullet (physician review plus training suspension) with no quantitative reload target
+  [clin=5 act=3 clar=6]  Actionability is weakest: despite correctly reframing the low ACWR as chronic fatigue rather than detraining, the recommendations amount to little mor
+  [clin=4 act=3 clar=6]  Actionability is the weakest dimension: beyond 'halt training and see a physician' there are no concrete parameters — no monitoring cadence, no HRV/we
+  [clin=6 act=3 clar=6]  Actionability is weakest: the brief offers only a single generic referral instruction with no quantitative training prescription (e.g., specific suspe
+  [clin=5 act=3 clar=6]  Actionability is weakest: despite correctly identifying a probable non-functional overreaching/OTS picture, the brief offers a single vague bullet ('s
+  [clin=5 act=3 clar=6]  Actionability is weakest: despite a CRITICAL rating, the brief offers only a single vague referral recommendation with no quantitative load prescripti
+  [clin=5 act=3 clar=6]  Actionability is weakest: beyond a single 'suspend training and see a physician' bullet there are no quantitative prescriptions, sleep/recovery interv
+
+======================================================================
+  Ground-truth overtraining_syndrome clinical accuracy: mean 4.80  dist {3: 1, 4: 1, 5: 7, 6: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/overtraining_syndrome__coach__claude.jsonl

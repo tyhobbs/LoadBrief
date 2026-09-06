@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=fixture_congestion  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation to reduce intensity to RPE ≤ 6 could be more specific by also suggesting a reduction i
+  [clin=3 act=6 clar=6]  The brief misinterprets the ACWR and HRV data, leading to an overdiagnosis of 'early overtraining signs' and an overly aggressive load reduction recom
+  [clin=3 act=6 clar=6]  The brief misinterprets the ACWR and HRV data, leading to an overdiagnosis of 'early overtraining signs' and an overly aggressive recommendation for a
+  [clin=2 act=5 clar=5]  The brief misinterprets the monitoring data, particularly the acute:chronic workload ratio and HRV, leading to an incorrect classification of 'early o
+  [clin=2 act=5 clar=4]  The brief's conclusion of 'early overtraining signs' and 'significant load reduction required' directly contradicts its own assessment of a 'well-bala
+  [clin=2 act=5 clar=6]  The brief misinterprets the acute:chronic workload ratio and incorrectly identifies early overtraining signs without supporting data, especially given
+  [clin=2 act=5 clar=6]  The brief's conclusion of 'early overtraining signs' and 'moderate' status contradicts the 'well-balanced' acute:chronic ratio and 'normal' sleep, ind
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation to reduce intensity to RPE <= 6 could be more specific by suggesting a duration or typ
+  [clin=3 act=5 clar=6]  The brief misinterprets the ACWR and HRV data, leading to an overdiagnosis of 'early overtraining signs' and overly aggressive recommendations.
+  [clin=2 act=4 clar=5]  The brief misinterprets the acute:chronic workload ratio and HRV dip, leading to an inaccurate classification of 'early overtraining signs' and an ove
+
+======================================================================
+  Ground-truth fixture_congestion clinical accuracy: mean 3.10  dist {2: 5, 3: 3, 6: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/fixture_congestion__athlete__gemini.jsonl

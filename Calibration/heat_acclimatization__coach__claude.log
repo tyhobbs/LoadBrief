@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=heat_acclimatization  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=5 clar=5]  Clinical accuracy is weakest because the brief contradicts itself and the input data — it attributes the 7-day HRV suppression to heat acclimatisation
+  [clin=3 act=4 clar=5]  Clinical accuracy is lowest because the brief self-contradicts — it first frames the 7-day HRV suppression as subclinical training fatigue requiring H
+  [clin=3 act=4 clar=5]  Clinical accuracy is lowest because the brief contradicts itself — it simultaneously frames the 7-day HRV suppression as training-induced subclinical 
+  [clin=3 act=4 clar=5]  Clinical accuracy is weakest because the brief contradicts itself — attributing HRV suppression to combined training/wellness fatigue in one section a
+  [clin=3 act=5 clar=5]  Clinical reasoning is internally contradictory and unsafe: it dismisses 7 days of severe HRV suppression as a benign heat-acclimatisation artefact whi
+  [clin=3 act=4 clar=5]  The brief contradicts itself by first attributing the 7-day HRV suppression to subclinical training fatigue requiring load reduction and then reclassi
+  [clin=2 act=3 clar=6]  Clinical accuracy is lowest because the brief fabricates a finding absent from the input — it asserts and interprets 'HRV suppression' when no HRV dat
+  [clin=2 act=5 clar=5]  Clinical accuracy is lowest because the brief reclassifies a 7-day HRV suppression explicitly flagged as non-functional overreaching as a benign heat-
+  [clin=3 act=4 clar=5]  Clinical accuracy is weakest: the brief contradicts itself by simultaneously attributing the HRV suppression to subclinical training fatigue ('trust H
+  [clin=3 act=2 clar=5]  Lowest score is actionability: the only recommendation is a generic 'increase monitoring frequency' with no heat-specific mitigation (hydration/electr
+
+======================================================================
+  Ground-truth heat_acclimatization clinical accuracy: mean 2.80  dist {2: 2, 3: 8}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/heat_acclimatization__coach__claude.jsonl

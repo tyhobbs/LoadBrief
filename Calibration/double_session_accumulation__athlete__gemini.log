@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=double_session_accumulation  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=6 clar=5]  The brief misinterprets the ACWR and HRV data, leading to an overestimation of fatigue and an overly aggressive recommendation for load reduction.
+  [clin=3 act=5 clar=6]  The brief misinterprets the ACWR and incorrectly concludes that the overall load is reasonable despite clear signs of fatigue and overreaching.
+  [clin=6 act=6 clar=7]  The brief's interpretation of non-functional overreaching is slightly premature given the current data, which points more towards functional overreach
+  [clin=3 act=4 clar=5]  The brief misinterprets the ACWR and overstates the severity of the athlete's status, indicating a lack of clinical accuracy.
+  [clin=3 act=6 clar=6]  The brief misinterprets the ACWR and overall athlete status, downplaying significant fatigue signals.
+  [clin=3 act=6 clar=6]  The brief misinterprets the acute:chronic workload ratio and downplays the significance of the declining HRV trend and moderately depressed wellness s
+  [clin=3 act=4 clar=6]  The brief's interpretation of the acute:chronic ratio and the conclusion about overall load being reasonable despite multiple fatigue markers are cont
+  [clin=3 act=4 clar=6]  The brief misinterprets the ACWR and overall load, given the athlete is in taper and showing multiple signs of under-recovery.
+  [clin=3 act=4 clar=6]  The brief's recommendation for a 'significant load reduction' (40-50%) contradicts the initial assessment of a 'well-balanced' training load and 'swee
+  [clin=3 act=4 clar=5]  The brief misinterprets the ACWR and overstates the severity of the athlete's condition, potentially leading to unnecessary rest.
+
+======================================================================
+  Ground-truth double_session_accumulation clinical accuracy: mean 3.30  dist {3: 9, 6: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/double_session_accumulation__athlete__gemini.jsonl

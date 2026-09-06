@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=high_acwr_stable_physiology  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=5 clar=7]  The actionability is somewhat limited as the recommendations are conditional and lack specific training adjustments beyond load reduction percentages.
+  [clin=2 act=5 clar=6]  The brief's interpretation of the ACWR and HRV data, especially the contradictory 'recovery numbers are holding up well' despite a significant HRV dro
+  [clin=2 act=6 clar=5]  The AI's interpretation of the athlete's status and recovery is contradictory and misrepresents the provided data, particularly regarding HRV which wa
+  [clin=3 act=5 clar=6]  The brief misinterprets the HRV trend and the implications of a high ACWR, leading to potentially risky recommendations.
+  [clin=1 act=3 clar=4]  The brief contains contradictory statements and misinterprets key physiological signals, leading to dangerously inaccurate conclusions about the athle
+  [clin=2 act=3 clar=4]  The brief contains contradictory statements and misinterprets key physiological signals, leading to an inaccurate overall assessment and inappropriate
+  [clin=2 act=5 clar=5]  The AI's interpretation of the combined signals and the resulting 'CURRENT STATUS' is contradictory and clinically inaccurate, as it downplays clear s
+  [clin=2 act=4 clar=4]  The AI brief contains significant contradictions and misinterpretations of the provided data, particularly regarding fatigue and overreaching.
+  [clin=1 act=2 clar=4]  The brief misinterprets the ACWR and contradicts itself regarding recovery and overall status, indicating a fundamental lack of clinical accuracy.
+  [clin=2 act=3 clar=6]  The brief misinterprets the HRV trend and the overall physiological readiness, leading to contradictory conclusions and inappropriate recommendations 
+
+======================================================================
+  Ground-truth high_acwr_stable_physiology clinical accuracy: mean 2.30  dist {1: 2, 2: 6, 3: 1, 6: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/high_acwr_stable_physiology__athlete__gemini.jsonl

@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=altitude_camp  audience=coach  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=6 clar=7]  The brief's interpretation of HRV suppression at altitude as primarily hypoxic stress rather than training overload is a nuanced and clinically accura
+  [clin=6 act=5 clar=7]  While the recommendations are good, they lack specific quantitative targets for the increased monitoring frequency.
+  [clin=7 act=6 clar=7]  The actionability is slightly reduced by the lack of specific RPE guidance for the *duration* of the reduced intensity session.
+  [clin=7 act=6 clar=7]  The actionability is slightly reduced as the recommendation for RPE ≤ 6 could be further specified with a duration or a more concrete example for a ba
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, particularly in its nuanced interpretation of HRV at altitude and the signal conflict.
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation to reduce intensity to RPE <= 6 could be more specific by suggesting a type of session
+  [clin=6 act=6 clar=7]  The brief's interpretation of HRV suppression at altitude as solely hypoxic stress rather than potential training overload, despite the ACWR being opt
+  [clin=3 act=5 clar=6]  The brief misinterprets HRV suppression at altitude, incorrectly attributing it solely to hypoxic stress rather than considering it as a potential ind
+  [clin=6 act=4 clar=7]  The recommendation to 'maintain current load' is somewhat vague given the altitude context and 'moderate risk' assessment.
+  [clin=6 act=5 clar=7]  The actionability is good but could be more specific regarding what 'deterioration' entails for maintaining current load.
+
+======================================================================
+  Ground-truth altitude_camp clinical accuracy: mean 5.90  dist {3: 1, 6: 7, 7: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/altitude_camp__coach__gemini.jsonl

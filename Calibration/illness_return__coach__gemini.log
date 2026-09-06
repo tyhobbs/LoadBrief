@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=illness_return  audience=coach  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=6 clar=7]  The brief's interpretation of ACWR in the context of return-to-play is sound, but the recommendation to reduce intensity to RPE ≤ 6 could be more spec
+  [clin=7 act=6 clar=7]  The recommendation to reduce intensity to RPE <= 6 is good, but could be more specific regarding the type of session or specific drills.
+  [clin=7 act=6 clar=7]  The recommendation to reduce intensity to RPE ≤ 6 is good, but could be more specific by suggesting a duration or type of activity.
+  [clin=6 act=6 clar=7]  The brief's interpretation of the ACWR in the context of return-to-play is sound, but the recommendation to reduce intensity to RPE ≤ 6 could be more 
+  [clin=6 act=5 clar=7]  While the recommendations are good, they could be more specific regarding load management strategies beyond just 'continue training with heightened mo
+  [clin=6 act=6 clar=7]  The brief's interpretation of the ACWR in the context of return-to-play is sound, but the 'danger zone' label could be softened given the context.
+  [clin=7 act=7 clar=7]  All aspects of the brief are excellent, demonstrating strong clinical reasoning, clear actionable recommendations, and professional clarity.
+  [clin=6 act=5 clar=7]  The actionability could be improved with more specific quantitative guidance on load management, rather than just 'continue training with heightened m
+  [clin=6 act=5 clar=7]  While the recommendations are good, they could be more specific regarding the type of session (e.g., run, swim, bike) and duration for the RPE reducti
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, particularly in its nuanced interpretation of the ACWR in the context of return-to-play and the integration o
+
+======================================================================
+  Ground-truth illness_return clinical accuracy: mean 6.30  dist {6: 7, 7: 3}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/illness_return__coach__gemini.jsonl

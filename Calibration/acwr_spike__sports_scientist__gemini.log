@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=acwr_spike  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=5 clar=6]  The classification of 'functional overreaching' is clinically inaccurate given the severity and duration of HRV suppression and multiple wellness flag
+  [clin=5 act=6 clar=7]  The overreaching classification of 'Functional overreaching' contradicts the severity of the presented data, which points more towards non-functional 
+  [clin=3 act=6 clar=7]  The overreaching classification is incorrect given the severity of the physiological and subjective markers.
+  [clin=3 act=6 clar=7]  The overreaching classification is inconsistent with the presented data, indicating non-functional overreaching rather than functional overreaching.
+  [clin=3 act=6 clar=7]  The overreaching classification is incorrect given the severity of the HRV suppression and multiple wellness flags, suggesting non-functional overreac
+  [clin=2 act=5 clar=6]  The brief incorrectly classifies the overreaching as functional despite the strong indicators of non-functional overreaching.
+  [clin=3 act=6 clar=7]  The overreaching classification is inconsistent with the presented data, indicating a significant clinical inaccuracy.
+  [clin=3 act=6 clar=6]  The clinical accuracy is low because the AI's interpretation of the monitoring data and subsequent overreaching classification is inconsistent and pot
+  [clin=5 act=6 clar=7]  The overreaching classification of 'Functional overreaching' is questionable given the severity of the physiological and subjective markers.
+  [clin=3 act=6 clar=7]  The overreaching classification is incorrect given the severity and duration of HRV suppression and wellness flags.
+
+======================================================================
+  Ground-truth acwr_spike clinical accuracy: mean 3.20  dist {2: 2, 3: 6, 5: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/acwr_spike__sports_scientist__gemini.jsonl

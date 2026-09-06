@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=high_acwr_stable_physiology  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, particularly in its nuanced interpretation of conflicting signals, but could be slightly improved by explicit
+  [clin=2 act=6 clar=7]  The brief's interpretation of ACWR and HRV, particularly the overreaching classification, is contradictory and reflects poor clinical reasoning.
+  [clin=2 act=3 clar=6]  The brief's interpretation of the ACWR and overreaching classification is contradictory and potentially misleading, as an elevated ACWR with suppresse
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation for recreational athletes could be more nuanced regarding the specific type of load re
+  [clin=2 act=3 clar=6]  The brief's interpretation of ACWR and HRV is contradictory and clinically inaccurate, leading to a flawed overreaching classification.
+  [clin=2 act=2 clar=5]  The AI's interpretation of the monitoring data, particularly the overreaching classification and recommendations, is contradictory and clinically inac
+  [clin=2 act=4 clar=6]  The AI's interpretation of the ACWR and HRV data, particularly its overreaching classification, is clinically inaccurate and potentially misleading.
+  [clin=2 act=4 clar=6]  The brief's interpretation of the ACWR and HRV data, leading to contradictory overreaching classifications and recommendations, is clinically inaccura
+  [clin=2 act=3 clar=6]  The brief dangerously misinterprets the ACWR and the implications of elevated load during a taper phase, leading to inappropriate recommendations.
+  [clin=2 act=5 clar=6]  The brief's interpretation of ACWR and HRV, particularly the overreaching classification, is contradictory and misrepresents established sports scienc
+
+======================================================================
+  Ground-truth high_acwr_stable_physiology clinical accuracy: mean 2.80  dist {2: 8, 6: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/high_acwr_stable_physiology__sports_scientist__gemini.jsonl

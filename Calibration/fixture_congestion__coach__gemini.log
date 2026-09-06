@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=fixture_congestion  audience=coach  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=6 clar=7]  The brief demonstrates strong clinical reasoning, particularly in its interpretation of HRV and ACWR, and provides actionable recommendations.
+  [clin=6 act=7 clar=7]  The clinical accuracy is strong, but the classification of functional overreaching might be slightly premature given the improving HRV trend and norma
+  [clin=6 act=7 clar=7]  The clinical classification of functional overreaching is plausible but could be more cautiously phrased given the recreational context and limited da
+  [clin=3 act=5 clar=6]  The clinical classification of 'functional overreaching' is not strongly supported by the provided data, especially given the optimal ACWR and good su
+  [clin=2 act=6 clar=6]  The clinical classification of 'Functional overreaching' is directly contradicted by the ACWR and sleep data provided, indicating a significant misint
+  [clin=2 act=5 clar=6]  The AI's clinical classification of 'functional overreaching' is inaccurate given the athlete's normal subjective wellness and healthy sleep, which co
+  [clin=2 act=5 clar=6]  The classification of functional overreaching is not supported by the data presented, especially given the ACWR is in the sweet spot and no individual
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the classification of 'Functional Overreaching' might be premature given the limited data presented, as H
+  [clin=3 act=6 clar=7]  The clinical classification of functional overreaching is premature and potentially inaccurate given the mixed signals and the athlete's return from i
+  [clin=6 act=7 clar=7]  The clinical classification of 'functional overreaching' is plausible given the data, but without performance data, it's a strong inference rather tha
+
+======================================================================
+  Ground-truth fixture_congestion clinical accuracy: mean 4.20  dist {2: 3, 3: 2, 6: 5}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/fixture_congestion__coach__gemini.jsonl

@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=illness_return  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=5 clar=6]  The actionability could be improved with more specific guidance on how to reduce intensity beyond just RPE ≤ 6, especially given the context of a tape
+  [clin=3 act=5 clar=6]  The interpretation of the ACWR and the 'subclinical fatigue' reasoning are flawed given the context of return from illness.
+  [clin=3 act=4 clar=6]  The brief misinterprets the ACWR spike, attributing it solely to the illness-enforced rest rather than acknowledging the actual high acute load relati
+  [clin=6 act=6 clar=7]  The brief's interpretation of the acute:chronic ratio, while acknowledging the illness context, could be more nuanced regarding the 'danger zone' give
+  [clin=3 act=3 clar=5]  The AI's interpretation of the ACWR in the context of returning from illness is flawed, potentially leading to inappropriate recommendations.
+  [clin=3 act=5 clar=6]  The interpretation of the acute:chronic workload ratio is contradictory and potentially misleading, undermining clinical accuracy.
+  [clin=2 act=5 clar=6]  The brief misinterprets the ACWR, downplaying its significance despite the athlete's recent illness and the ratio entering the danger zone, which is a
+  [clin=3 act=4 clar=6]  The brief misinterprets the ACWR, downplaying a high ratio (1.396) as 'expected' due to illness, which is a dangerous oversimplification for an athlet
+  [clin=3 act=5 clar=6]  The interpretation of the acute:chronic workload ratio and HRV suppression is contradictory and potentially misleading, especially given the athlete's
+  [clin=3 act=5 clar=6]  The brief misinterprets the acute:chronic ratio context and the implications of non-functional overreaching, leading to a potentially misleading 'mode
+
+======================================================================
+  Ground-truth illness_return clinical accuracy: mean 3.50  dist {2: 1, 3: 7, 6: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/illness_return__athlete__gemini.jsonl

@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=acwr_spike  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=4 clar=6]  Clinical accuracy is lowest because the brief internally contradicts itself — labeling the pattern non-functional overreaching in the integration sect
+  [clin=3 act=5 clar=6]  Clinical accuracy is lowest because the brief internally contradicts itself — the Signal Integration section states the pattern is consistent with non
+  [clin=3 act=4 clar=5]  The brief self-contradicts by twice asserting non-functional overreaching while the CLINICAL CLASSIFICATION section labels it functional overreaching 
+  [clin=3 act=4 clar=6]  The brief contradicts itself by asserting a pattern 'consistent with non-functional overreaching' in the integration section and then classifying it a
+  [clin=3 act=4 clar=6]  The brief contradicts itself by stating the converging signals are 'consistent with non-functional overreaching' and then classifying the case as func
+  [clin=2 act=4 clar=6]  Clinical accuracy is lowest because the brief fabricates HRV data never provided in the input (62.1ms vs 90.3ms baseline, 7-day suppression) and then 
+  [clin=2 act=4 clar=5]  Clinical accuracy is lowest because the brief fabricates an entire HRV dataset (60.8ms vs 77.3ms baseline over 7 days) that appears nowhere in the mon
+  [clin=2 act=5 clar=4]  Clinical accuracy is lowest because the brief is internally contradictory and unsupported by the data — it asserts 'clear signs of non-functional over
+  [clin=3 act=3 clar=6]  The brief contradicts itself clinically — the integration section asserts a pattern 'consistent with non-functional overreaching' while the classifica
+  [clin=3 act=3 clar=6]  The brief directly contradicts itself — the integration section states the pattern is consistent with non-functional overreaching while the classifica
+
+======================================================================
+  Ground-truth acwr_spike clinical accuracy: mean 2.70  dist {2: 3, 3: 7}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/acwr_spike__coach__claude.jsonl

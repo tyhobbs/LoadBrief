@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=double_session_accumulation  audience=coach  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=3 clar=6]  The recommendation to reduce overall training load by 40-50% contradicts the finding that total workload is not the problem, and the ACWR is within op
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation to suspend all training might be overly aggressive given the ACWR is only 'moderate' a
+  [clin=7 act=5 clar=7]  While the recommendation to suspend training is clear, it lacks specific active recovery protocols or a timeline for when markers might normalize, red
+  [clin=6 act=7 clar=7]  The brief's clinical classification of 'non-functional overreaching' might be slightly premature given the ACWR is only 'moderate' and the athlete is 
+  [clin=6 act=5 clar=7]  The recommendation to reduce overall training load by 40-50% is a significant reduction that might be too aggressive given the ACWR is within optimal 
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation for a 40-50% load reduction might be too aggressive given the athlete is already in a 
+  [clin=6 act=5 clar=7]  While the recommendation for full rest is clear, it lacks specific guidance on how long this rest should be or what constitutes a return to baseline f
+  [clin=6 act=7 clar=7]  The brief is strong across all dimensions, with the clinical accuracy being slightly less than perfect due to the lack of explicit mention of the tape
+  [clin=3 act=5 clar=6]  The recommendation for an immediate 40-50% load reduction is too drastic given the ACWR is in the sweet spot and the primary issue identified is sessi
+  [clin=6 act=6 clar=7]  While generally good, the recommendation for 3-5 days complete rest might be too aggressive given the ACWR is only in the caution zone and the primary
+
+======================================================================
+  Ground-truth double_session_accumulation clinical accuracy: mean 5.50  dist {3: 2, 6: 7, 7: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/double_session_accumulation__coach__gemini.jsonl

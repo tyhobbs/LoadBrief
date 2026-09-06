@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=monotony_problem  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=4 clar=6]  The AI's interpretation of the ACWR and subsequent overreaching classification is contradictory and clinically inaccurate given the input data.
+  [clin=6 act=6 clar=7]  The brief's overreaching classification of 'Functional overreaching' is a strong claim given the limited data, as it typically requires performance de
+  [clin=6 act=6 clar=7]  The brief's confidence in classifying functional overreaching as 'moderate' is a slight detractor from its clinical accuracy, as the data strongly sup
+  [clin=6 act=7 clar=7]  The brief demonstrates strong clinical accuracy, actionability, and clarity, with only minor room for improvement in the nuance of HRV interpretation.
+  [clin=2 act=2 clar=6]  The AI's recommendation to 'maintain current load' directly contradicts its own classification of 'functional overreaching' and the observed declining
+  [clin=6 act=6 clar=7]  The brief's classification of functional overreaching is plausible given the data, but the recommendation for 3-5 days of complete rest might be sligh
+  [clin=6 act=7 clar=7]  The brief accurately interprets the monitoring data and provides sound sports science recommendations.
+  [clin=3 act=2 clar=6]  The overreaching classification of 'functional overreaching' is not supported by the data, as the athlete is in post-season recovery and showing decli
+  [clin=6 act=6 clar=7]  The overreaching classification of 'functional overreaching' is a strong claim given the data, which only suggests mild autonomic fatigue and high mon
+  [clin=6 act=6 clar=7]  The brief's interpretation of monotony and its implications could be slightly more nuanced, but it is still largely accurate.
+
+======================================================================
+  Ground-truth monotony_problem clinical accuracy: mean 4.90  dist {2: 2, 3: 1, 6: 7}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/monotony_problem__sports_scientist__gemini.jsonl

@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=overtraining_syndrome  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=7 clar=7]  The brief accurately interprets the data, identifying non-functional overreaching despite low workload, and provides clear, actionable recommendations
+  [clin=7 act=6 clar=7]  The brief provides clear and actionable recommendations, though specific quantitative actions for return to play are not included, which is appropriat
+  [clin=7 act=7 clar=7]  All aspects of the brief are well-executed and demonstrate excellent clinical reasoning, actionability, and clarity.
+  [clin=6 act=5 clar=7]  While the brief correctly identifies overtraining syndrome, the recommendation for training suspension lacks specific duration or alternative activiti
+  [clin=6 act=3 clar=6]  While the recommendation to refer to sports medicine is appropriate given the severity, the brief lacks specific, actionable steps for the coach to im
+  [clin=6 act=5 clar=7]  While the recommendations are clear, they lack specific quantitative actions for a coach beyond 'training suspension'.
+  [clin=6 act=5 clar=7]  While the brief recommends a training halt, it lacks specific guidance on how to resume training or what specific activities are permissible during th
+  [clin=7 act=7 clar=7]  The brief demonstrates excellent clinical reasoning, provides clear and actionable recommendations, and is professionally written.
+  [clin=6 act=7 clar=7]  The brief's interpretation of the ACWR, while not explicitly wrong, could be more nuanced regarding the 'detraining risk' versus the current state of 
+  [clin=7 act=6 clar=7]  The brief provides clear recommendations, but could offer slightly more specific guidance on the duration of the training halt or next steps post-phys
+
+======================================================================
+  Ground-truth overtraining_syndrome clinical accuracy: mean 6.40  dist {6: 6, 7: 4}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/overtraining_syndrome__athlete__gemini.jsonl

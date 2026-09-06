@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=early_overreaching  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=5 clar=5]  The brief correctly identifies that ACWR is masked by acute-chronic convergence after three unloaded weeks and flags an NFOR-consistent 7-day HRV supp
+  [clin=3 act=5 clar=5]  Clinical accuracy is weakest because the brief contradicts itself — it correctly notes that the 'normal' ACWR masks two weeks of converged, sustained 
+  [clin=3 act=5 clar=5]  Clinical accuracy is weakest because the brief simultaneously declares non-functional overreaching, attributes the picture to an unidentified non-trai
+  [clin=3 act=5 clar=5]  The brief internally contradicts itself — it correctly notes that the normal ACWR masks two weeks of sustained accumulated load without unloading (the
+  [clin=3 act=5 clar=5]  Clinical accuracy is lowest because the brief contradicts itself — it correctly identifies 3 weeks of accumulated load without unloading as the concer
+  [clin=3 act=5 clar=5]  The brief contradicts itself — it correctly identifies that the benign ACWR masks three weeks of sustained load without unloading (accumulated load, n
+  [clin=3 act=5 clar=5]  The brief correctly notes in its clinical classification that the flat ACWR masks two weeks of sustained accumulated load without unloading, yet the i
+  [clin=3 act=5 clar=5]  The brief correctly notes that the normal ACWR masks three weeks of sustained elevated load with converged acute/chronic values, but then contradicts 
+  [clin=1 act=4 clar=4]  Clinical accuracy is dangerously wrong: the brief declares HIGH risk and non-functional overreaching despite a sweet-spot ACWR (1.095), low monotony, 
+  [clin=2 act=4 clar=5]  Clinical accuracy is lowest because the brief correctly identifies non-functional overreaching from 3 weeks of unrelieved accumulated load, then contr
+
+======================================================================
+  Ground-truth early_overreaching clinical accuracy: mean 2.70  dist {1: 1, 2: 1, 3: 8}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/early_overreaching__coach__claude.jsonl

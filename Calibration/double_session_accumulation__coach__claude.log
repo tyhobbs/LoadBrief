@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=double_session_accumulation  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=3 clar=6]  The brief fabricates a subjective wellness profile (four amber flags) that was never provided in the monitoring data and then prescribes a 40-50% glob
+  [clin=3 act=3 clar=6]  Clinical accuracy is lowest because the brief fabricates data not present in the input (3 consecutive days of HRV suppression, red/amber flag colors, 
+  [clin=2 act=3 clar=5]  Clinical reasoning is internally contradictory and overstated — a MODERATE risk picture (ACWR 1.37, one amber wellness flag, moderate HRV dip) is desc
+  [clin=2 act=3 clar=4]  Clinical reasoning is internally contradictory and overcalled — the brief labels risk MODERATE with zero red flags and an ACWR of 1.33 (only marginall
+  [clin=3 act=4 clar=6]  Clinical accuracy is weakest: the HRV delta is miscalculated (7.4ms, not 5.7ms), and the brief explicitly identifies session density rather than total
+  [clin=3 act=4 clar=6]  Clinical accuracy is weakest: the brief prescribes an aggressive 40-50% volume cut with total high-intensity elimination for 5-7 days despite a MODERA
+  [clin=2 act=3 clar=5]  Clinical accuracy is lowest because the brief mislabels a moderate picture (ACWR 1.31, ~7ms HRV dip, three amber flags with zero red flags) as non-fun
+  [clin=3 act=4 clar=6]  Clinical accuracy is weakest: the brief ignores the stated taper context (where an ACWR of 1.269 with acute above chronic is itself anomalous) and pre
+  [clin=3 act=5 clar=6]  The prescribed 40-50% load cut with an RPE 6 ceiling for 5 days is disproportionate to a modest ~7% HRV dip with a healthy ACWR (1.168), normal monoto
+  [clin=2 act=3 clar=5]  Clinical accuracy is lowest because the brief overstates the evidence — labelling a caution-zone ACWR (1.307), a mild 6.5ms HRV dip, and adequate 7.4h
+
+======================================================================
+  Ground-truth double_session_accumulation clinical accuracy: mean 2.60  dist {2: 4, 3: 6}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/double_session_accumulation__coach__claude.jsonl

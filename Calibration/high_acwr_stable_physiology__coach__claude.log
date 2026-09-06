@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=high_acwr_stable_physiology  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=3 clar=5]  Clinical reasoning is the weakest dimension: the brief entirely ignores the flagged monotony index of 2.39 (and resulting training strain), and on the
+  [clin=3 act=6 clar=5]  Clinical accuracy is lowest because the brief internally contradicts itself — it flags HRV as 'moderately suppressed' and claims two signals show fati
+  [clin=2 act=5 clar=4]  Clinical accuracy is lowest because the brief fabricates HRV data absent from the input (with an internal arithmetic error: 53.3ms is 9.6ms, not 4.6ms
+  [clin=3 act=4 clar=5]  The brief repeatedly labels HRV as 'stable/normal' when the input explicitly states a declining HRV trend below baseline, and this omission drives an 
+  [clin=2 act=3 clar=4]  Clinical accuracy is lowest because the brief contradicts itself repeatedly — declaring HRV both 'moderately suppressed' and 'stable', claiming conver
+  [clin=2 act=3 clar=3]  Clinical accuracy is lowest because the brief is internally contradictory and factually wrong — it claims all signals converge on non-functional overr
+  [clin=2 act=4 clar=4]  Clinical accuracy is the weakest dimension: the brief contradicts itself within a few lines (HRV simultaneously described as showing stress and as sta
+  [clin=2 act=3 clar=4]  Clinical accuracy is lowest because the brief directly contradicts itself and the data — it claims HRV 'remains stable' and that the load is 'well tol
+  [clin=2 act=2 clar=4]  Clinical accuracy is lowest because the brief fabricates stable HRV data that was never provided (only wearable sleep was available), downgrades an AC
+  [clin=2 act=4 clar=4]  Clinical accuracy is lowest because the brief internally contradicts itself — it labels HRV as 'moderately suppressed' and then claims it 'remains sta
+
+======================================================================
+  Ground-truth high_acwr_stable_physiology clinical accuracy: mean 2.30  dist {2: 7, 3: 3}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/high_acwr_stable_physiology__coach__claude.jsonl

@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=fixture_congestion  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=4 clar=5]  Clinical accuracy is weakest: a 7-day severe HRV suppression with a declining trend is labeled only MODERATE risk and confidently classified as functi
+  [clin=4 act=5 clar=6]  Clinical accuracy is only adequate because the brief ignores the mitigating signals (improving HRV trend, mild 4.6ms deviation, normal wellness, norma
+  [clin=3 act=5 clar=6]  Clinical accuracy is weakest: the brief treats an ACWR of 1.268 (within the conventional 0.8–1.3 sweet spot, and computed from trivially small absolut
+  [clin=3 act=5 clar=6]  Clinical reasoning is the weakest element: with an optimal ACWR (1.19), normal monotony, adequate sleep, good subjective wellness, and an explicitly i
+  [clin=2 act=5 clar=6]  Clinical accuracy is the weakest dimension because the brief contradicts its own data — an optimal ACWR (1.146), adequate sleep, and explicitly no thr
+  [clin=2 act=4 clar=6]  The brief fabricates HRV data entirely absent from the monitoring snapshot (50.0ms vs a 55.8ms baseline) and then builds a false 'two-signal convergen
+  [clin=2 act=5 clar=5]  Clinical accuracy is lowest because the brief diagnoses functional overreaching and prescribes a 40-50% load cut despite explicitly stating that ACWR 
+  [clin=4 act=4 clar=5]  Core ACWR and HRV interpretations are sound, but the brief fabricates unsupported detail ('3 consecutive days'), applies a confident 'functional overr
+  [clin=3 act=6 clar=6]  Clinical reasoning is the weakest dimension: the brief ignores the explicitly improving HRV trend and normal wellness, over-reads a sub-1.5 ACWR plus 
+  [clin=3 act=4 clar=6]  Clinical accuracy is weakest: an ACWR of 1.22 sits within the conventional 0.8–1.3 sweet spot rather than a caution zone, a functional overreaching di
+
+======================================================================
+  Ground-truth fixture_congestion clinical accuracy: mean 2.90  dist {2: 3, 3: 5, 4: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/fixture_congestion__coach__claude.jsonl
