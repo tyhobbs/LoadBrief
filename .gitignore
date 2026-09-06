@@ -1,62 +1,49 @@
-# ── Model checkpoints and weights (host on Hugging Face, not git) ──────
+# ---- large artifacts hosted on Hugging Face ----
+dataset/
+dataset_v*/
+Compiled?Datasets/
+*.jsonl.gz
+
+# corpora: the released v8 split lives on HF; v1-v7 are not published
+**/train.jsonl
+**/validation.jsonl
+**/test.jsonl
+
+# formatted splits are regenerable: python3 evaluation/format_dataset.py
+formatted/
+formatted_v*/
+Formatted?Datasets/
+**/sft_train.jsonl
+**/sft_validation.jsonl
+**/grpo_train.jsonl
+
+# model weights: the v8 adapter is on HF
+sft_checkpoint*/
+grpo_checkpoint*/
+final_model*/
+sft_checkpoints/
+checkpoint-*/
 *.safetensors
 *.bin
 *.pt
-*.pth
-*.ckpt
-final_model*/
-sft_checkpoint*/
-*_checkpoint*/
-checkpoints/
-adapter_model/
 
-# ── Generated data and large artifacts ────────────────────────────────
-# Keep data_sample.jsonl (committed intentionally); ignore everything else.
-*.jsonl
-!data_sample.jsonl
-dataset/
-formatted/
-baseline_outputs/
-llm_judge_results/
-paper_artifacts/
-evaluation_results.json
+# ---- keep (do NOT ignore) ----
+# results/evaluation_results_v*.json     rule metrics, Table VI
+# results/llm_judge_results_v8/*.jsonl   judge ratings, Tables VII-VIII, Figs 5-6
+# results/calibration/*.jsonl            judge calibration, Section X
+# results/baseline_outputs_v8/*.jsonl    completions, Fig 8 + zero-shot floor
+# results/test_metadata_v8.jsonl         id -> scenario/audience join key
+!results/**/*.json
+!results/**/*.jsonl
 
-# ── Secrets — never commit API keys ───────────────────────────────────
-.env
-.env.*
-*.key
-secrets.*
-**/api_key*
-
-# ── Python ────────────────────────────────────────────────────────────
+# ---- housekeeping ----
 __pycache__/
-*.py[cod]
-*$py.class
-*.egg-info/
-.eggs/
-build/
-dist/
+*.pyc
 .venv/
 venv/
-env/
-.ipynb_checkpoints/
-
-# ── HuggingFace / model cache ─────────────────────────────────────────
-.cache/
-hf_cache/
-~/.cache/huggingface/
-
-# ── LaTeX build artifacts (if a paper/ dir is added) ──────────────────
-*.aux
+.env
+.DS_Store
 *.log
+*.aux
 *.out
 *.synctex.gz
-*.fls
-*.fdb_latexmk
-
-# ── OS / editor ───────────────────────────────────────────────────────
-.DS_Store
-Thumbs.db
-.idea/
-.vscode/
-*.swp
