@@ -4,25 +4,30 @@
 # python3 m4_sft_training.py
 
 import os
+
+# MPS env vars must be set BEFORE torch is imported — torch reads them at
+# import time, so setting them afterwards (as this script previously did) was
+# a silent no-op.
+os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
+
 import json
 import time
 import glob
 import torch
 from pathlib import Path
-from datasets import Dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from peft import LoraConfig, get_peft_model, TaskType
-from trl import SFTTrainer, SFTConfig
 
-os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
-os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = "0.0"
+# NOTE: datasets / peft / trl are deliberately NOT imported here.
+# Importing `datasets` (via its pyarrow native extension) before the 8B model
+# is allocated on MPS segfaults reproducibly on this stack. Loading the model
+# first, then importing, avoids it. See main().
 
 # ── Configuration ─────────────────────────────────────────────────────
 MODEL_NAME    = "meta-llama/Meta-Llama-3-8B-Instruct"
-TRAIN_DATA    = "./formatted/sft_train.jsonl"
-VAL_DATA      = "./formatted/sft_validation.jsonl"
-OUTPUT_DIR    = "./sft_checkpoint"
-FINAL_DIR     = "./sft_checkpoint_final"
+TRAIN_DATA    = "./formatted_v8/sft_train.jsonl"
+VAL_DATA      = "./formatted_v8/sft_validation.jsonl"
+OUTPUT_DIR    = "./sft_checkpoint_v8"
+FINAL_DIR     = "./sft_checkpoint_v8_final"
 
 BATCH_SIZE    = 2        # reduced from 4
 GRAD_ACCUM    = 16       # effective batch still 32
@@ -38,7 +43,9 @@ MAX_TRAIN_EXAMPLES = 20_000
 MAX_VAL_EXAMPLES   = 2_000
 
 
-def load_jsonl(path: str, max_examples: int = None) -> Dataset:
+def load_jsonl(path: str, max_examples: int = None) -> list:
+    """Returns a plain list — conversion to Dataset happens after the model
+    is loaded, so `datasets` need not be imported at module level."""
     examples = []
     with open(path, "r", encoding="utf-8") as f:
         for line in f:
@@ -47,7 +54,7 @@ def load_jsonl(path: str, max_examples: int = None) -> Dataset:
                 examples.append(json.loads(line))
                 if max_examples and len(examples) >= max_examples:
                     break
-    return Dataset.from_list(examples)
+    return examples
 
 
 def main():
@@ -63,12 +70,12 @@ def main():
     if not Path(TRAIN_DATA).exists():
         raise FileNotFoundError(f"{TRAIN_DATA} not found — run format_dataset.py first")
 
-    train_dataset = load_jsonl(TRAIN_DATA, MAX_TRAIN_EXAMPLES)
-    val_dataset   = load_jsonl(VAL_DATA,   MAX_VAL_EXAMPLES)
-    print(f"Train: {len(train_dataset):,} | Val: {len(val_dataset):,}")
+    train_raw = load_jsonl(TRAIN_DATA, MAX_TRAIN_EXAMPLES)
+    val_raw   = load_jsonl(VAL_DATA,   MAX_VAL_EXAMPLES)
+    print(f"Train: {len(train_raw):,} | Val: {len(val_raw):,}")
     print(f"(capped from full dataset to prevent RAM overflow)")
 
-    steps_per_epoch = len(train_dataset) // (BATCH_SIZE * GRAD_ACCUM)
+    steps_per_epoch = len(train_raw) // (BATCH_SIZE * GRAD_ACCUM)
     total_steps     = steps_per_epoch * EPOCHS
     est_minutes     = total_steps * 3 / 60  # ~3 sec/step on M4
     print(f"Estimated training time: ~{est_minutes:.0f} minutes")
@@ -88,6 +95,14 @@ def main():
         device_map="mps"
     )
     print(f"Loaded in {time.time()-start:.0f}s — {model.num_parameters()/1e9:.2f}B params")
+
+    # Deferred imports — safe now that the model is allocated on MPS.
+    from datasets import Dataset
+    from peft import LoraConfig, get_peft_model, TaskType
+    from trl import SFTTrainer, SFTConfig
+
+    train_dataset = Dataset.from_list(train_raw)
+    val_dataset   = Dataset.from_list(val_raw)
 
     # Enable gradient checkpointing to reduce activation memory
     model.gradient_checkpointing_enable()
