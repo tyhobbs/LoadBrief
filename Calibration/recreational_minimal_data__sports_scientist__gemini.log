@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=recreational_minimal_data  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation for a 5-10% load increase could be more specific given the athlete's return from illne
+  [clin=2 act=2 clar=6]  The brief dangerously misinterprets the ACWR in the context of an athlete returning from illness and with limited monitoring data, leading to inapprop
+  [clin=5 act=6 clar=7]  The interpretation of ACWR as 'undertraining' is a simplification; while below the optimal range, it doesn't automatically equate to undertraining wit
+  [clin=5 act=5 clar=6]  The clinical accuracy is good, but the AI incorrectly states 'sleep quality' was monitored when the input specified 'sleep duration' was the only slee
+  [clin=5 act=4 clar=6]  The actionability is somewhat limited as the recommendation to 'maintain current load' lacks specific quantitative guidance for a coach.
+  [clin=3 act=4 clar=6]  The interpretation of the ACWR as 'undertraining' and the subsequent recommendation to increase load, especially for an athlete returning from illness
+  [clin=6 act=5 clar=7]  The actionability could be improved with more specific quantitative recommendations for maintaining load, especially given the partial monitoring data
+  [clin=5 act=3 clar=6]  The recommendations are too general and lack specific quantitative guidance for a coach to implement effectively.
+  [clin=3 act=5 clar=6]  The interpretation of the ACWR as 'undertraining' and the subsequent conclusion of 'normal adaptation' despite potential chronic adaptation risk is co
+  [clin=6 act=5 clar=7]  The actionability is slightly limited by the lack of specific training recommendations beyond 'no modifications' and the general nature of monitoring 
+
+======================================================================
+  Ground-truth recreational_minimal_data clinical accuracy: mean 4.60  dist {2: 1, 3: 2, 5: 4, 6: 3}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/recreational_minimal_data__sports_scientist__gemini.jsonl

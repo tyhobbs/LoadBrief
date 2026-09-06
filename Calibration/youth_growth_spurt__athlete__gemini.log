@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=youth_growth_spurt  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=5 clar=6]  The brief overstates the level of fatigue given the ACWR, improving HRV trend, and stable muscle soreness, especially for an amateur athlete.
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation to 'maintain training load' if a non-training stressor is identified could be risky gi
+  [clin=6 act=7 clar=7]  The brief demonstrates strong clinical accuracy, actionability, and clarity, effectively integrating multiple data points for a nuanced recommendation
+  [clin=6 act=7 clar=7]  The brief accurately interprets the data and provides clear, actionable recommendations.
+  [clin=6 act=4 clar=6]  The actionability is somewhat limited as the recommendations are general rather than providing specific training adjustments.
+  [clin=5 act=6 clar=7]  The brief's interpretation of the acute:chronic workload ratio as 'well-balanced' despite the PHV consideration and other fatigue markers is a slight 
+  [clin=3 act=6 clar=6]  The brief misinterprets the ACWR and overstates the fatigue indicated by the HRV, leading to an overly aggressive recommendation for load reduction.
+  [clin=6 act=7 clar=7]  The brief demonstrates strong clinical accuracy, effectively integrating multiple data points to provide a comprehensive assessment and actionable rec
+  [clin=5 act=6 clar=7]  The clinical accuracy is good, but the interpretation of muscle soreness as 'below normal' is slightly ambiguous and could be clearer.
+  [clin=3 act=3 clar=5]  The brief misinterprets the acute:chronic workload ratio, suggesting the athlete is near their tolerance threshold when the ratio indicates well-manag
+
+======================================================================
+  Ground-truth youth_growth_spurt clinical accuracy: mean 4.90  dist {3: 3, 5: 2, 6: 5}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/youth_growth_spurt__athlete__gemini.jsonl

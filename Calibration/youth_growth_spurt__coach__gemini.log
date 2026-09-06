@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=youth_growth_spurt  audience=coach  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=6 clar=7]  The recommendation to reduce load by 40-50% is a significant reduction that might be overly aggressive given the ACWR and improving HRV trend, potenti
+  [clin=7 act=7 clar=7]  All scores are high as the brief demonstrates excellent clinical reasoning, provides specific and actionable recommendations, and is exceptionally cle
+  [clin=6 act=7 clar=7]  The brief demonstrates strong clinical reasoning, particularly in integrating PHV with other markers, but the immediate 40-50% load reduction might be
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but could be slightly improved by explicitly linking the 'non-functional overreaching' to the 'elevated fatig
+  [clin=6 act=5 clar=7]  While the recommendations are clear, they lack specific quantitative guidance for the coach regarding load adjustments in the context of PHV.
+  [clin=6 act=7 clar=7]  The brief demonstrates strong clinical reasoning, particularly in integrating PHV with workload, and provides highly actionable recommendations.
+  [clin=6 act=7 clar=7]  The brief demonstrates strong clinical reasoning, particularly in integrating multiple signals and adjusting for PHV, making it highly actionable and 
+  [clin=6 act=6 clar=7]  The clinical accuracy is strong, but the recommendation to reduce load by 40-50% is quite aggressive given the ACWR is optimal and the athlete is in p
+  [clin=6 act=6 clar=7]  The brief is generally strong, but the recommendation to maintain training load if a non-training stressor is identified might be too aggressive given
+  [clin=6 act=5 clar=7]  While the recommendations are good, they lack specific quantitative targets for the increased monitoring, making them somewhat less actionable.
+
+======================================================================
+  Ground-truth youth_growth_spurt clinical accuracy: mean 6.10  dist {6: 9, 7: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/youth_growth_spurt__coach__gemini.jsonl

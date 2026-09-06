@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=undertraining  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=3 clar=6]  The interpretation of ACWR and the overall risk classification are clinically inaccurate given the critical HRV suppression.
+  [clin=2 act=3 clar=6]  The brief's interpretation of the ACWR and subsequent recommendation to 'hold load steady' despite critically suppressed HRV and declining trend is cl
+  [clin=2 act=3 clar=6]  The brief's overall risk classification and recommendations are contradictory to the presented data, particularly regarding the critically suppressed 
+  [clin=2 act=2 clar=6]  The AI's interpretation of the ACWR and subsequent recommendation to 'maintain current load' directly contradicts established sports science principle
+  [clin=2 act=3 clar=6]  The AI's interpretation of HRV suppression and its implications for overreaching and load management is fundamentally flawed and contradicts establish
+  [clin=2 act=3 clar=6]  The interpretation of the ACWR and the subsequent recommendation to hold load steady despite critically suppressed HRV and undertraining are clinicall
+  [clin=2 act=3 clar=6]  The brief's interpretation of the ACWR and the subsequent recommendation to hold load steady despite critical HRV suppression and detraining risk is c
+  [clin=3 act=4 clar=6]  The interpretation of ACWR and the recommendation to hold load steady despite critical HRV suppression and detraining risk are clinically questionable
+  [clin=2 act=4 clar=6]  The AI's interpretation of the ACWR and HRV data, especially in the context of a taper phase, is clinically inaccurate and potentially harmful.
+  [clin=5 act=4 clar=6]  The recommendation to progressively increase training load is somewhat vague and lacks specific quantitative guidance for the coach.
+
+======================================================================
+  Ground-truth undertraining clinical accuracy: mean 2.40  dist {2: 8, 3: 1, 5: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/undertraining__sports_scientist__gemini.jsonl

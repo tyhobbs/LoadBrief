@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=undertraining  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=3 clar=5]  The brief contains contradictory statements and misinterprets key physiological signals, leading to potentially harmful recommendations.
+  [clin=2 act=3 clar=5]  The AI's interpretation of the acute:chronic workload ratio and HRV data is contradictory and clinically inaccurate, leading to inappropriate recommen
+  [clin=2 act=3 clar=5]  The AI's interpretation of the monitoring data is contradictory and reflects poor clinical reasoning, particularly in its assessment of 'CURRENT STATU
+  [clin=2 act=3 clar=5]  The AI's interpretation of the acute:chronic ratio and the overall status is contradictory and potentially misleading, as a low ratio indicates undert
+  [clin=2 act=3 clar=5]  The brief contains contradictory statements and misinterprets key physiological signals, particularly regarding HRV and ACWR.
+  [clin=3 act=3 clar=5]  The brief's interpretation of the acute:chronic ratio and the overall status is contradictory and potentially misleading, indicating a lack of sound c
+  [clin=2 act=3 clar=5]  The brief's interpretation of the acute:chronic workload ratio and the subsequent recommendation to 'hold load steady' despite critically suppressed H
+  [clin=2 act=3 clar=5]  The interpretation of the ACWR and HRV data is contradictory and potentially misleading, indicating a poor understanding of sports science principles.
+  [clin=2 act=3 clar=4]  The brief contains contradictory statements and misinterprets key physiological signals, leading to potentially harmful recommendations.
+  [clin=3 act=3 clar=5]  The brief misinterprets the ACWR, suggesting detraining risk when the AI's brief states the body is handling training well, creating a contradiction.
+
+======================================================================
+  Ground-truth undertraining clinical accuracy: mean 2.20  dist {2: 8, 3: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/undertraining__athlete__gemini.jsonl

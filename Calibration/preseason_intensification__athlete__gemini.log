@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=preseason_intensification  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=6 clar=6]  The brief misinterprets the acute:chronic workload ratio and HRV trend, leading to an incorrect classification of overtraining and an overly aggressiv
+  [clin=2 act=5 clar=6]  The AI incorrectly interprets the ACWR, stating 1.35 is 'well-balanced' and 'optimal' when it is above the optimal range (0.8-1.3) and indicates an el
+  [clin=3 act=4 clar=6]  The brief misinterprets the acute:chronic workload ratio and overstates the severity of the athlete's condition, leading to an inaccurate diagnosis of
+  [clin=6 act=6 clar=7]  The brief's interpretation of 'early overtraining signs' might be slightly strong given the A:C ratio is in the sweet spot, though the HRV suppression
+  [clin=6 act=6 clar=7]  The brief demonstrates strong clinical reasoning, particularly in integrating disparate signals and identifying subclinical fatigue.
+  [clin=3 act=6 clar=6]  The brief misinterprets the athlete's status as 'early overtraining signs' when the data indicates early functional overreaching or elevated fatigue, 
+  [clin=3 act=5 clar=6]  The brief misinterprets the ACWR and overstates the severity of the athlete's status, incorrectly classifying it as early overtraining signs when the 
+  [clin=2 act=4 clar=5]  The brief misinterprets the monitoring data, particularly the HRV drop and the A:C ratio, leading to an incorrect diagnosis of 'early overtraining sig
+  [clin=2 act=4 clar=5]  The AI's interpretation of the ACWR and HRV data, leading to an overtraining diagnosis and subsequent recommendations, is clinically inaccurate and po
+  [clin=2 act=5 clar=6]  The brief misinterprets the ACWR and other load metrics, leading to an inaccurate assessment of the athlete's status and inappropriate recommendations
+
+======================================================================
+  Ground-truth preseason_intensification clinical accuracy: mean 3.20  dist {2: 4, 3: 4, 6: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/preseason_intensification__athlete__gemini.jsonl

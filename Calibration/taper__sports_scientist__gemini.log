@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=taper  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=4 clar=6]  The interpretation of the ACWR as 'undertraining' and the subsequent recommendation to increase load without considering the declining HRV trend and p
+  [clin=6 act=6 clar=7]  The brief accurately interprets the data and provides actionable recommendations, though the ACWR interpretation could be slightly more nuanced for a 
+  [clin=6 act=7 clar=7]  The brief is clinically accurate, actionable, and clear, with no significant weaknesses.
+  [clin=6 act=6 clar=7]  The ACWR interpretation is slightly off; while 0.591 is low, it doesn't necessarily mean 'undertrained' in a negative sense, but rather indicates a lo
+  [clin=6 act=7 clar=7]  The ACWR interpretation is slightly off; while 0.618 is below the sweet spot, it's not necessarily 'undertraining' but rather a detraining risk, which
+  [clin=6 act=5 clar=7]  While the recommendation for a load increase is quantitative, it lacks specific guidance on how to implement this increase within the athlete's curren
+  [clin=6 act=4 clar=7]  While the recommendation to increase training load is appropriate, it lacks specific quantitative guidance for the coach.
+  [clin=3 act=5 clar=6]  The interpretation of the ACWR as 'undertraining' and 'positive' monitoring data, despite a detraining risk, is a significant clinical inaccuracy.
+  [clin=3 act=4 clar=6]  The brief misinterprets the HRV trend and its implications for training load, suggesting an increase despite a declining trend and normal readings, wh
+  [clin=6 act=6 clar=7]  The brief is clinically accurate, but the recommendation for a 5-10% load increase could be slightly more specific regarding the type of load (e.g., v
+
+======================================================================
+  Ground-truth taper clinical accuracy: mean 5.10  dist {3: 3, 6: 7}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/taper__sports_scientist__gemini.jsonl

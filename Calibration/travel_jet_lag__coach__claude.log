@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=travel_jet_lag  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=3 clar=5]  Clinical accuracy is lowest because the brief fabricates HRV suppression and 'emerging fatigue' when only sleep data exists and the actual signal is u
+  [clin=3 act=2 clar=4]  The only actionable item is 'increase monitoring frequency' — there is no prescribed load progression to reverse the flagged detraining risk (ACWR 0.7
+  [clin=3 act=3 clar=5]  The clinical reasoning is internally contradictory and unsupported — it labels HRV both 'elevated (+17.0ms, excellent recovery)' and 'suppressed,' ass
+  [clin=3 act=2 clar=4]  Actionability is the weakest dimension: the brief offers a single vague bullet ('check in with athlete') with no prescribed session loads, taper volum
+  [clin=3 act=3 clar=5]  Clinical accuracy is undermined by a self-contradiction — the brief correctly notes HRV is elevated 11.6ms above baseline and improving, then classifi
+  [clin=3 act=2 clar=5]  Actionability is lowest because the only recommendation is generic 'increase monitoring' with no quantitative load progression despite an ACWR of 0.73
+  [clin=3 act=3 clar=5]  The brief internally contradicts itself by labeling HRV as 'elevated/excellent' in one section then describing 'suppressed HRV' and 'the suppression' 
+  [clin=3 act=2 clar=5]  Actionability is the weakest dimension: the only recommendation is 'no load change required' with generic daily tracking, offering no quantitative loa
+  [clin=3 act=3 clar=4]  The brief internally contradicts itself — it correctly reports HRV as elevated (+14.8ms) then classifies the picture as 'suppressed HRV and wellness,'
+  [clin=2 act=2 clar=4]  The brief contradicts its own input by calling HRV and wellness 'suppressed' when HRV is 14.6ms above baseline, frames a clearly undertrained athlete 
+
+======================================================================
+  Ground-truth travel_jet_lag clinical accuracy: mean 2.80  dist {2: 2, 3: 8}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/travel_jet_lag__coach__claude.jsonl

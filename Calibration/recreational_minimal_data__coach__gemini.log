@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=recreational_minimal_data  audience=coach  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=3 clar=6]  The interpretation of ACWR as 'undertraining' without considering the return from illness phase and the potential for a lower chronic base is a signif
+  [clin=3 act=3 clar=6]  The clinical accuracy is low because the AI failed to integrate critical contextual information like the athlete's return from illness, recreational l
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is high, but it could be improved by explicitly linking the 'return from injury' phase to the conservative load increase
+  [clin=5 act=6 clar=7]  The brief's clinical accuracy is slightly hampered by the AI's misinterpretation of available wellness data, stating 'sleep quality' was monitored whe
+  [clin=6 act=5 clar=7]  The actionability is slightly limited as the recommendations are mostly 'no change' and 'increase monitoring' rather than specific training adjustment
+  [clin=3 act=3 clar=6]  The interpretation of the ACWR as 'undertraining' and the subsequent recommendation to 'progressively increase' load, especially for an athlete return
+  [clin=3 act=3 clar=6]  The brief misinterprets the available sleep data and makes an unsupported claim about HRV, which was not provided in the input.
+  [clin=5 act=3 clar=6]  The recommendations are too general for immediate application by a coach, lacking specific quantitative guidance for load progression.
+  [clin=3 act=5 clar=6]  The brief misinterprets the ACWR, stating 'undertraining' when a ratio of 0.656 actually indicates a low acute load relative to chronic, which could b
+  [clin=5 act=4 clar=6]  The actionability is somewhat limited as 'continue current training plan' is general, and the escalation trigger is vague without specific markers or 
+
+======================================================================
+  Ground-truth recreational_minimal_data clinical accuracy: mean 4.20  dist {3: 5, 5: 3, 6: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/recreational_minimal_data__coach__gemini.jsonl

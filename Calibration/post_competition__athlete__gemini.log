@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=post_competition  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=3 clar=5]  The brief contains contradictory statements and misinterprets key physiological signals, particularly regarding HRV and the acute:chronic workload rat
+  [clin=1 act=2 clar=4]  The AI's interpretation of the ACWR and subsequent recommendation to reduce training volume is dangerously wrong and contradicts established sports sc
+  [clin=2 act=3 clar=5]  The brief contains contradictory statements and misinterprets key physiological signals, leading to potentially harmful recommendations.
+  [clin=2 act=3 clar=5]  The brief contains contradictory statements and misinterprets key physiological indicators, leading to potentially harmful recommendations.
+  [clin=6 act=6 clar=7]  The brief accurately interprets the ACWR and provides a clear, actionable recommendation for load adjustment.
+  [clin=2 act=3 clar=4]  The AI's interpretation of the acute:chronic workload ratio and HRV data is contradictory and misrepresents the athlete's status, indicating a poor un
+  [clin=2 act=5 clar=4]  The brief contradicts itself by stating 'All indicators suggest this training block is progressing well' while simultaneously noting 'Your training lo
+  [clin=2 act=3 clar=5]  The brief misinterprets the ACWR and HRV data, leading to contradictory and potentially harmful conclusions about the athlete's status.
+  [clin=1 act=2 clar=4]  The AI's interpretation of the acute:chronic workload ratio and subsequent recommendations are contradictory and clinically inaccurate, suggesting a v
+  [clin=5 act=6 clar=7]  While the brief correctly identifies HRV suppression, it might slightly overstate the 'fatigue building' given the stable trend and good wellness scor
+
+======================================================================
+  Ground-truth post_competition clinical accuracy: mean 2.50  dist {1: 2, 2: 6, 5: 1, 6: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/post_competition__athlete__gemini.jsonl

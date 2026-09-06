@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=undertraining  audience=coach  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=3 clar=6]  The brief misinterprets the ACWR and HRV data, leading to an inaccurate risk assessment and recommendations.
+  [clin=2 act=3 clar=6]  The brief's interpretation of the ACWR and HRV data, especially in the context of 'post season recovery' and 'subclinical fatigue,' is contradictory a
+  [clin=2 act=3 clar=6]  The brief misinterprets the ACWR and HRV data, leading to an inaccurate risk assessment and recommendations.
+  [clin=2 act=3 clar=6]  The brief misinterprets the ACWR and HRV signals, leading to an inaccurate risk assessment and clinical classification.
+  [clin=2 act=3 clar=6]  The brief's interpretation of HRV suppression and its subsequent classification of 'Normal adaptation — no overreaching indicators' is dangerously ina
+  [clin=2 act=3 clar=6]  The interpretation of the ACWR and the subsequent classification of 'Normal adaptation' despite critically suppressed HRV and undertraining indicators
+  [clin=2 act=3 clar=6]  The brief's clinical accuracy is low due to misinterpreting the ACWR and the severity of the HRV suppression, leading to an incorrect classification o
+  [clin=6 act=5 clar=7]  While the recommendations are generally sound, they lack specific quantitative guidance for holding load steady or investigating recovery quality.
+  [clin=2 act=3 clar=6]  The brief's interpretation of ACWR and the classification of 'Normal adaptation — no overreaching indicators' are clinically inaccurate given the crit
+  [clin=3 act=3 clar=6]  The brief misinterprets the ACWR, failing to acknowledge the detraining risk in a post-season recovery phase and recommending load increases without s
+
+======================================================================
+  Ground-truth undertraining clinical accuracy: mean 2.50  dist {2: 8, 3: 1, 6: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/undertraining__coach__gemini.jsonl

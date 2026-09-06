@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=post_competition  audience=coach  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=4 clar=6]  The interpretation of the ACWR and the subsequent recommendation to hold load steady despite critically suppressed HRV and undertraining is clinically
+  [clin=1 act=1 clar=5]  The AI's recommendation to reduce session volume by 20-30% directly contradicts the finding of undertraining (ACWR 0.742) and would exacerbate the iss
+  [clin=2 act=3 clar=6]  The brief's clinical accuracy is low because it misinterprets the ACWR and HRV data, leading to an incorrect classification of 'Normal adaptation' des
+  [clin=2 act=4 clar=5]  The brief's clinical accuracy is poor due to contradictory classifications and misinterpretation of key metrics like ACWR and overreaching.
+  [clin=5 act=3 clar=6]  The recommendation to progressively increase training load is too vague for immediate application by a coach.
+  [clin=3 act=4 clar=6]  The interpretation of ACWR and HRV suppression, especially in the context of 'subclinical fatigue' and 'normal adaptation', is contradictory and clini
+  [clin=3 act=5 clar=6]  The AI's interpretation of the ACWR as 'undertraining' and 'no action required' despite the athlete being in a taper and having a low ACWR is contradi
+  [clin=2 act=2 clar=6]  The brief misinterprets the ACWR and HRV data, leading to an inaccurate risk assessment and inappropriate recommendations for an athlete in a competit
+  [clin=2 act=2 clar=6]  The AI's interpretation of the ACWR and subsequent recommendations are contradictory and clinically inaccurate, suggesting a reduction in load when th
+  [clin=3 act=6 clar=7]  The clinical accuracy is low because the recommendation to reduce volume contradicts the overall positive assessment and the 'normal adaptation' class
+
+======================================================================
+  Ground-truth post_competition clinical accuracy: mean 2.60  dist {1: 1, 2: 4, 3: 4, 5: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/post_competition__coach__gemini.jsonl

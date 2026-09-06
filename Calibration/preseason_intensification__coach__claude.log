@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=preseason_intensification  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=3 clar=5]  Clinical accuracy is lowest because the brief internally contradicts itself — asserting all signals converge on non-functional overreaching while simu
+  [clin=2 act=3 clar=5]  Clinical accuracy is lowest because the brief uncritically repeats the false claim that an ACWR of 1.346 is within the 0.8–1.3 optimal range, downgrad
+  [clin=3 act=3 clar=5]  The brief contradicts itself clinically — labeling risk as MODERATE and 'functional overreaching' while simultaneously asserting the pattern is 'consi
+  [clin=3 act=4 clar=5]  Clinical accuracy is weakest: a 7-day, ~22% HRV suppression in an athlete returning from illness is downgraded to MODERATE risk and confidently labele
+  [clin=3 act=4 clar=5]  Clinical accuracy is weakest: the brief uncritically repeats that ACWR 1.275 is 'optimal' despite it sitting at the upper edge of the sweet spot in an
+  [clin=4 act=4 clar=6]  Clinical accuracy is weakest: the ACWR and HRV readings are interpreted reasonably, but the brief prescribes an aggressive 50% volume cut with aerobic
+  [clin=2 act=4 clar=6]  Clinical accuracy is lowest because the brief internally contradicts itself — labelling the case MODERATE risk and 'functional overreaching' while sim
+  [clin=2 act=6 clar=6]  Clinical accuracy is lowest because the brief uncritically accepts an ACWR of 1.332 as 'optimal' (it actually sits at/above the conventional 0.8–1.3 s
+  [clin=3 act=4 clar=5]  Clinical accuracy is weakest: the brief internally contradicts itself by declaring a non-functional overreaching pattern with 'all signals converging'
+  [clin=2 act=5 clar=6]  Clinical accuracy is the weakest dimension because the brief diagnoses 'functional overreaching' and prescribes a 40-50% load cut despite explicitly s
+
+======================================================================
+  Ground-truth preseason_intensification clinical accuracy: mean 2.60  dist {2: 5, 3: 4, 4: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/preseason_intensification__coach__claude.jsonl

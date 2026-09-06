@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=travel_jet_lag  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=3 clar=6]  The interpretation of ACWR as 'undertraining' is a misapplication of the metric, which primarily indicates injury risk rather than training status, an
+  [clin=6 act=5 clar=7]  The actionability is good but could be more specific regarding the 'no load change required' given the detraining risk.
+  [clin=3 act=4 clar=6]  The brief's clinical accuracy is compromised by a significant misinterpretation of the athlete's physiological state and the implications of the inter
+  [clin=3 act=4 clar=6]  The clinical accuracy is low due to a misinterpretation of the HRV data and an unsupported overreaching classification.
+  [clin=6 act=4 clar=7]  The recommendations are too general and lack specific quantitative guidance for adjusting training load, despite identifying undertraining.
+  [clin=2 act=2 clar=5]  The AI's interpretation of the ACWR and subsequent recommendations are contradictory and clinically inaccurate, failing to address the undertraining s
+  [clin=3 act=5 clar=6]  The interpretation of ACWR and the overreaching classification are questionable given the provided data, indicating a lack of clinical accuracy.
+  [clin=6 act=5 clar=7]  The actionability could be improved with more specific quantitative recommendations for training load adjustment.
+  [clin=3 act=4 clar=6]  The interpretation of HRV and its dissociation with subjective wellness, especially given the international travel, is questionable and potentially mi
+  [clin=6 act=3 clar=6]  The recommendations are too general and lack specific quantitative guidance for immediate application by a coach.
+
+======================================================================
+  Ground-truth travel_jet_lag clinical accuracy: mean 4.10  dist {2: 1, 3: 5, 6: 4}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/travel_jet_lag__sports_scientist__gemini.jsonl

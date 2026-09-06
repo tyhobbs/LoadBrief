@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=preseason_intensification  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=6 clar=7]  The overreaching classification is inconsistent with the presented data and the definition provided.
+  [clin=2 act=4 clar=6]  The ACWR interpretation is fundamentally incorrect, leading to a misclassification of risk and overreaching.
+  [clin=3 act=4 clar=6]  The overreaching classification is incorrect given the presented data, which suggests non-functional overreaching rather than functional overreaching.
+  [clin=6 act=6 clar=7]  The brief is generally strong, but the overreaching classification could be more nuanced given the limited data provided for a definitive diagnosis.
+  [clin=6 act=6 clar=7]  The overreaching classification of 'functional overreaching' is a strong hypothesis but could benefit from slightly more nuance given the return from 
+  [clin=6 act=7 clar=7]  The brief is very strong, with only minor room for improvement in clinical accuracy by explicitly linking load reduction to the prior shoulder injury.
+  [clin=3 act=6 clar=6]  The overreaching classification is inconsistent with the provided data and the ACWR interpretation is slightly off.
+  [clin=3 act=6 clar=7]  The overreaching classification of 'functional overreaching' is inconsistent with the data presented, as a 7.1ms drop in HRV with otherwise normal sub
+  [clin=2 act=6 clar=7]  The overreaching classification is dangerously wrong given the presented data, contradicting the signal integration.
+  [clin=1 act=4 clar=6]  The AI's classification of 'Functional Overreaching' is dangerously inaccurate given the provided data, as there is no information to support any over
+
+======================================================================
+  Ground-truth preseason_intensification clinical accuracy: mean 3.40  dist {1: 1, 2: 3, 3: 3, 6: 3}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/preseason_intensification__sports_scientist__gemini.jsonl

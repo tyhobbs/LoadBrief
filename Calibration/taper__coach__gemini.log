@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=taper  audience=coach  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=3 clar=6]  The interpretation of the ACWR as 'undertraining' and the subsequent recommendation to 'progressively increase' load, despite a declining HRV trend an
+  [clin=6 act=4 clar=7]  The recommendation to 'progressively increase' training load is sound but lacks specific quantitative guidance for immediate application.
+  [clin=6 act=3 clar=7]  The recommendation to 'progressively increase' training load lacks specific quantitative guidance for immediate application.
+  [clin=6 act=6 clar=7]  The brief accurately interprets the monitoring data and provides a clear, actionable recommendation for load adjustment.
+  [clin=6 act=6 clar=7]  The brief is clinically accurate, but the recommendation for a 5-10% load increase could be slightly more specific regarding the type of load (e.g., v
+  [clin=6 act=6 clar=7]  The brief is generally accurate, but the recommendation to increase load during a taper phase needs careful consideration and might be misaligned with
+  [clin=7 act=6 clar=7]  The recommendation for a 5-10% load increase could be slightly more specific regarding how to implement it (e.g., duration, specific session types).
+  [clin=3 act=5 clar=6]  The interpretation of the ACWR as 'undertraining' and 'detraining risk' during a taper for a sprint swimmer is a significant clinical misinterpretatio
+  [clin=3 act=5 clar=6]  The brief misinterprets the HRV trend and the implications of a low ACWR, leading to a potentially misleading 'normal adaptation' classification.
+  [clin=2 act=4 clar=6]  The interpretation of the ACWR as 'undertraining' and 'progressing well' is contradictory and clinically inaccurate, especially given the risk to chro
+
+======================================================================
+  Ground-truth taper clinical accuracy: mean 4.70  dist {2: 2, 3: 2, 6: 5, 7: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/taper__coach__gemini.jsonl

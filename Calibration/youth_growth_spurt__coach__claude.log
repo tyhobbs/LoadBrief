@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=youth_growth_spurt  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=4 clar=6]  Clinical accuracy is weakest: the brief overstates a mild, improving HRV suppression as 'moderate' fatigue, treats a single stable amber soreness flag
+  [clin=3 act=5 clar=6]  Clinical accuracy is the weakest dimension: the brief internally contradicts itself by labeling HRV 'critically suppressed' for 7 consecutive days alo
+  [clin=3 act=6 clar=6]  Clinical accuracy is weakest: with ACWR at 0.985, acceptable monotony, 8.1h sleep, only a mild HRV dip and a single stable amber flag, the prescribed 
+  [clin=4 act=5 clar=6]  Clinical accuracy is weakest: the brief mislabels normal overall wellness as 'mildly depressed' and inflates a single amber fatigue flag into a second
+  [clin=3 act=3 clar=6]  Clinical accuracy is weakest because the brief never addresses the stated return-from-illness phase (which demands a graded reintroduction of load reg
+  [clin=3 act=6 clar=6]  Clinical reasoning is the weak point: the brief omits the explicitly reported improving HRV trend (which materially mitigates the 3-day suppression), 
+  [clin=3 act=5 clar=6]  Clinical accuracy is the weakest dimension: the arithmetic is wrong (38.9ms is 5.7ms, not 4.6ms, below the 44.6ms baseline) and the prescription of a 
+  [clin=3 act=5 clar=6]  Clinical accuracy is weakest: the brief escalates a 'mild' HRV suppression to 'moderate', fabricates trend descriptors for the wellness flags, ignores
+  [clin=4 act=5 clar=5]  Clinical accuracy is weakest: the brief fabricates details not in the monitoring data ("5 consecutive days" of HRV suppression, soreness "stable", com
+  [clin=5 act=3 clar=6]  Actionability is weakest: the brief tells the coach to apply 'maturation-adjusted limits' and 'heightened monitoring' without specifying any numeric l
+
+======================================================================
+  Ground-truth youth_growth_spurt clinical accuracy: mean 3.40  dist {3: 7, 4: 2, 5: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/youth_growth_spurt__coach__claude.jsonl

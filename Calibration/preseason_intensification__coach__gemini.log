@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=preseason_intensification  audience=coach  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=5 clar=6]  The clinical classification of 'functional overreaching' directly contradicts the 'non-functional overreaching' indicated by signal integration, which
+  [clin=2 act=4 clar=6]  The ACWR interpretation is incorrect, and the classification of functional overreaching is questionable given the critical HRV suppression and multipl
+  [clin=2 act=6 clar=7]  The clinical classification of 'functional overreaching' contradicts the 'non-functional overreaching' indicated by the signal integration, and the re
+  [clin=6 act=6 clar=7]  The clinical accuracy is strong, but the recommendation to reduce intensity to RPE <= 6 could be slightly more specific by suggesting a duration or ty
+  [clin=6 act=6 clar=7]  The brief demonstrates strong clinical reasoning, but the classification of 'functional overreaching' might be slightly premature without further cont
+  [clin=6 act=6 clar=7]  The clinical classification of functional overreaching is plausible but could be more nuanced given the off-season context and the specific ACWR and H
+  [clin=3 act=5 clar=6]  The clinical classification of 'functional overreaching' contradicts the 'significant fatigue accumulation' and 'non-functional overreaching' indicate
+  [clin=2 act=6 clar=7]  The clinical classification of functional overreaching is not supported by the provided data, as only one objective marker (HRV) shows a mild negative
+  [clin=2 act=6 clar=7]  The clinical classification of 'functional overreaching' contradicts the 'critically suppressed HRV for 7 consecutive days' and 'significant fatigue a
+  [clin=2 act=4 clar=6]  The clinical classification of functional overreaching is not supported by the provided data, which indicates healthy load metrics and normal sleep.
+
+======================================================================
+  Ground-truth preseason_intensification clinical accuracy: mean 3.30  dist {2: 6, 3: 1, 6: 3}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/preseason_intensification__coach__gemini.jsonl

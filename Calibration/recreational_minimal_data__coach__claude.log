@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=recreational_minimal_data  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=2 clar=6]  Actionability is lowest because the sole recommendation ('load can be progressively increased') gives no target ACWR, weekly percentage increment, or 
+  [clin=2 act=3 clar=6]  Clinical accuracy is the weakest dimension: the brief declares 'normal adaptation, continue as prescribed' despite the athlete being in return-from-il
+  [clin=3 act=4 clar=6]  Clinical accuracy is weakest: the brief contradicts itself by stating 'no monitored signal has crossed its threshold' and 'normal adaptation' immediat
+  [clin=4 act=3 clar=6]  Actionability is weakest: the only prescription is a generic "maintain current load" with no session-level volume/intensity targets, RPE ranges, or co
+  [clin=5 act=3 clar=6]  Actionability is weakest: the sole recommendation is "no modifications," with no concrete off-season squat programming parameters, load progression ce
+  [clin=2 act=2 clar=6]  Clinical accuracy is lowest because the brief internally contradicts itself — it flags ACWR 0.773 as below the 0.8 undertraining threshold yet states 
+  [clin=3 act=3 clar=5]  The brief correctly reads the ACWR as within range but entirely ignores the stated return-from-injury status and previous ankle flag — which should dr
+  [clin=3 act=3 clar=6]  The brief contradicts itself by flagging ACWR 0.757 as below the 0.8 undertraining threshold and then asserting 'no monitored signal has crossed its t
+  [clin=3 act=4 clar=6]  Clinical accuracy is undermined by internal contradiction — the brief identifies an ACWR of 0.656 as undertraining with chronic adaptation at risk, th
+  [clin=4 act=3 clar=6]  The only training directive is "continue current plan as prescribed" with no quantitative load targets or session guidance, and the escalation trigger
+
+======================================================================
+  Ground-truth recreational_minimal_data clinical accuracy: mean 3.20  dist {2: 2, 3: 5, 4: 2, 5: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/recreational_minimal_data__coach__claude.jsonl

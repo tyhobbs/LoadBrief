@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=taper  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=5 clar=6]  The brief misinterprets the HRV trend and the implications of a low A:C ratio, potentially leading to inappropriate load recommendations.
+  [clin=6 act=6 clar=7]  The brief accurately interprets the ACWR and provides a clear, actionable recommendation for load adjustment.
+  [clin=3 act=5 clar=6]  The interpretation of the acute:chronic ratio as 'losing fitness' is an oversimplification and potentially misleading, as a low ratio primarily indica
+  [clin=2 act=3 clar=6]  The interpretation of the Acute:Chronic ratio as 'losing fitness' is an oversimplification and potentially misleading, as a low ratio primarily indica
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, correctly identifying detraining risk and integrating multiple data points effectively.
+  [clin=6 act=6 clar=7]  The brief accurately interprets the A:C ratio and integrates other signals effectively, providing actionable recommendations.
+  [clin=2 act=3 clar=6]  The brief misinterprets the ACWR, suggesting 'low' status and 'losing fitness' when the ACWR of 0.633 actually indicates potential undertraining and a
+  [clin=2 act=5 clar=5]  The brief contains contradictory statements regarding the athlete's status and the interpretation of the acute:chronic workload ratio, indicating poor
+  [clin=2 act=3 clar=5]  The AI misinterprets the acute:chronic workload ratio and HRV trend, leading to contradictory and potentially misleading conclusions about the athlete
+  [clin=3 act=5 clar=6]  The AI's interpretation of the acute:chronic ratio as 'well-calibrated' and 'well tolerated' contradicts the input data indicating potential undertrai
+
+======================================================================
+  Ground-truth taper clinical accuracy: mean 3.50  dist {2: 4, 3: 3, 6: 3}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/taper__athlete__gemini.jsonl

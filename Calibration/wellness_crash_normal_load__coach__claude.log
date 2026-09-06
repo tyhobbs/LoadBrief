@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=wellness_crash_normal_load  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=5 act=5 clar=6]  Clinical reasoning is largely sound in recognising that a normal ACWR cannot explain 7 days of ~27% HRV suppression alongside four amber wellness flag
+  [clin=3 act=5 clar=5]  Clinical accuracy is the weakest dimension: classifying a 7-day, ~25% HRV suppression alongside a red fatigue flag and three amber wellness flags as m
+  [clin=3 act=5 clar=6]  Clinical accuracy is weakest: a 7-day severe HRV suppression with a declining trend plus four depressed wellness dimensions in a late in-season athlet
+  [clin=5 act=5 clar=6]  Core reasoning is sound (correct ACWR interpretation, appropriate non-functional-overreaching exclusion, sensible non-training-stressor hypothesis), b
+  [clin=2 act=3 clar=5]  Clinical accuracy is the weakest dimension because the brief fabricates HRV suppression and wellness deterioration that appear nowhere in the input da
+  [clin=4 act=5 clar=5]  Clinical accuracy is only adequate because a 7-day, ~22% HRV suppression combined with five amber wellness dimensions warrants a HIGH rather than MODE
+  [clin=4 act=5 clar=5]  Clinical accuracy is the weakest dimension because a 37% HRV suppression sustained over 7 consecutive days with a declining trend, two red wellness fl
+  [clin=2 act=3 clar=5]  Clinical accuracy is lowest because the brief fabricates monitoring data that was never provided — it repeatedly cites 'suppressed HRV' and a red-flag
+  [clin=4 act=5 clar=5]  Clinical accuracy is only adequate because the brief labels a 7-day, ~35% HRV suppression combined with a red stress flag and multi-domain wellness de
+  [clin=3 act=6 clar=5]  Clinical accuracy is weakest: a 7-day sustained HRV suppression of ~30% below baseline alongside four depressed wellness domains warrants a HIGH rathe
+
+======================================================================
+  Ground-truth wellness_crash_normal_load clinical accuracy: mean 3.50  dist {2: 2, 3: 3, 4: 3, 5: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/wellness_crash_normal_load__coach__claude.jsonl

@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=recreational_minimal_data  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=5 clar=6]  The interpretation of ACWR as 'low' and 'losing fitness' is an oversimplification and potentially misleading given the athlete's return from illness a
+  [clin=2 act=2 clar=5]  The brief dangerously misinterprets the ACWR and ignores critical context like return from illness and previous injury, leading to inappropriate recom
+  [clin=2 act=3 clar=5]  The brief misinterprets the Acute:Chronic ratio, suggesting fitness loss when a low ratio typically indicates undertraining or detraining, not necessa
+  [clin=5 act=4 clar=6]  The actionability is limited as the recommendations are generic and lack specific quantitative guidance for the athlete or coach.
+  [clin=4 act=4 clar=6]  The clinical accuracy is adequate, but the limited monitoring data means the conclusions drawn are less robust than ideal for a comprehensive sports s
+  [clin=2 act=3 clar=5]  The AI incorrectly interprets an A:C ratio of 0.773 as 'low' and indicative of 'losing fitness' when it actually suggests undertraining and potential 
+  [clin=3 act=2 clar=5]  The brief's clinical accuracy is compromised by the recommendation of 'no modifications to training' despite the athlete's return from a previous ankl
+  [clin=3 act=5 clar=6]  The interpretation of the acute:chronic workload ratio as 'low' and suggesting 'losing fitness' is an oversimplification and potentially misleading wi
+  [clin=2 act=3 clar=5]  The AI's interpretation of the Acute:Chronic ratio is contradictory and potentially misleading, indicating a fundamental misunderstanding of training 
+  [clin=5 act=4 clar=6]  The actionability is limited as the recommendations are generic due to the lack of specific data and do not provide quantitative guidance.
+
+======================================================================
+  Ground-truth recreational_minimal_data clinical accuracy: mean 3.10  dist {2: 4, 3: 3, 4: 1, 5: 2}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/recreational_minimal_data__athlete__gemini.jsonl

@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=undertraining  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=3 clar=4]  Clinical accuracy is lowest because the brief labels risk as LOW and classifies the athlete as 'normal adaptation — no overreaching indicators' while 
+  [clin=2 act=3 clar=4]  The brief is internally contradictory and clinically unsound — it labels 7 consecutive days of critically suppressed HRV as 'LOW' risk, 'normal adapta
+  [clin=2 act=3 clar=4]  Clinical accuracy is the weakest dimension: the brief classifies 7 consecutive days of HRV suppressed ~19% below baseline in a post-injury athlete as 
+  [clin=2 act=2 clar=5]  Clinical accuracy is the weakest dimension: the brief labels a severely low ACWR (0.415, detraining/chronic-load-erosion territory) combined with a 7.
+  [clin=3 act=3 clar=5]  Clinical accuracy is lowest because the brief internally contradicts itself — labeling risk LOW, load 'well-calibrated,' and 'normal adaptation, no ov
+  [clin=2 act=3 clar=5]  Clinical accuracy is the weakest dimension because the brief labels risk as LOW and classifies the athlete as showing 'normal adaptation — no overreac
+  [clin=2 act=3 clar=4]  Clinical accuracy is lowest because the brief internally contradicts itself — it identifies 7 consecutive days of HRV suppressed ~17% below baseline (
+  [clin=2 act=3 clar=4]  The brief is internally contradictory and clinically unsound: it labels risk LOW with 'no action required' while simultaneously flagging 7-day critica
+  [clin=3 act=3 clar=5]  Clinical reasoning is internally contradictory and context-blind — it labels risk 'LOW' and 'normal adaptation, no overreaching indicators' while simu
+  [clin=3 act=2 clar=6]  The sole recommendation — 'training load can be progressively increased' — offers no target ACWR, weekly load increment, session structure, or hamstri
+
+======================================================================
+  Ground-truth undertraining clinical accuracy: mean 2.30  dist {2: 7, 3: 3}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/undertraining__coach__claude.jsonl

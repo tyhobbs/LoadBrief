@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=wellness_crash_normal_load  audience=athlete  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation to 'maintain training load' if a non-training stressor is identified could be risky gi
+  [clin=6 act=6 clar=7]  The brief is clinically accurate, but the recommendation to maintain training load if a non-training stressor is identified could be risky given the c
+  [clin=3 act=4 clar=6]  The brief's interpretation of the athlete's status as 'moderate' and its primary recommendation to maintain training load despite severe HRV suppressi
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but it could be slightly improved by explicitly mentioning the athlete's knee history in the recommendations 
+  [clin=3 act=2 clar=5]  The brief's clinical accuracy is questionable as it misinterprets the A:C ratio and provides contradictory advice regarding the athlete's status.
+  [clin=3 act=4 clar=6]  The brief misinterprets the HRV suppression as solely due to non-training stressors, despite multiple amber wellness flags and a previous injury, whic
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, particularly in identifying the likely non-training stressor and integrating disparate signals.
+  [clin=3 act=3 clar=5]  The clinical accuracy is low because the AI misinterprets the available data and makes assumptions without sufficient information.
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, correctly identifying the discrepancy between training load and physiological/subjective markers, and suggest
+  [clin=6 act=6 clar=7]  The brief's clinical accuracy is strong, but the recommendation to 'maintain training load' if a non-training stressor is identified could be risky gi
+
+======================================================================
+  Ground-truth wellness_crash_normal_load clinical accuracy: mean 4.80  dist {3: 4, 6: 6}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/wellness_crash_normal_load__athlete__gemini.jsonl

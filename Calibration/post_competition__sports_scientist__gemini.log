@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=post_competition  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=4 clar=6]  The interpretation of the ACWR and the recommendation to hold load steady despite critically suppressed HRV and undertraining are clinically inaccurat
+  [clin=2 act=2 clar=6]  The recommendation to reduce load by 20-30% for 3-5 days directly contradicts the finding of undertraining and low ACWR, indicating a fundamental misu
+  [clin=2 act=3 clar=6]  The brief's overall risk classification of 'LOW' directly contradicts the critical HRV suppression and the recommendation to trust HRV over subjective
+  [clin=2 act=4 clar=6]  The AI's interpretation of ACWR and overreaching classification directly contradicts the provided monitoring data, indicating a fundamental misunderst
+  [clin=3 act=5 clar=6]  The brief misinterprets the ACWR, classifying it as undertraining when it indicates a potential detraining risk, and makes a blanket statement about '
+  [clin=3 act=4 clar=6]  The interpretation of the ACWR and the subsequent recommendation to hold load steady despite significant HRV suppression and a low ACWR is clinically 
+  [clin=6 act=6 clar=7]  While the ACWR interpretation is correct for general training, the brief does not fully account for the athlete being in a taper phase, which intentio
+  [clin=2 act=2 clar=6]  The AI's interpretation of the ACWR and subsequent recommendation to maintain load despite undertraining signals a fundamental misunderstanding of loa
+  [clin=2 act=2 clar=6]  The AI's interpretation of the ACWR and subsequent recommendation to reduce training volume are contradictory and clinically inaccurate given the unde
+  [clin=3 act=5 clar=6]  The brief's recommendation to reduce volume while maintaining intensity contradicts the HRV suppression, which typically warrants a reduction in inten
+
+======================================================================
+  Ground-truth post_competition clinical accuracy: mean 2.80  dist {2: 5, 3: 4, 6: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/post_competition__sports_scientist__gemini.jsonl

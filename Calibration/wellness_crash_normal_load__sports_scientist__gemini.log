@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=wellness_crash_normal_load  audience=sports_scientist  n=10
+  judge=gemini-2.5-flash (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=7 act=6 clar=7]  The actionability is high, but could be slightly improved with more specific examples of how to 'address the stressor directly' or what 'medical revie
+  [clin=7 act=6 clar=7]  The recommendations are generally actionable, but the specific quantitative reduction (20%) could be further contextualized for a rhythmic gymnast's t
+  [clin=7 act=6 clar=7]  The actionability is slightly reduced by the conditional nature of the recommendations, requiring an initial investigation before a definitive trainin
+  [clin=7 act=6 clar=7]  The actionability is slightly reduced by the conditional nature of the recommendations, requiring an initial investigation before a definitive trainin
+  [clin=4 act=5 clar=6]  The brief's interpretation of wellness deterioration without corresponding load elevation as solely an extrinsic stressor, rather than potentially an 
+  [clin=7 act=7 clar=7]  All scores are high as the brief demonstrates excellent clinical reasoning, provides specific and actionable recommendations, and is exceptionally cle
+  [clin=7 act=7 clar=7]  All aspects of the brief are well-reasoned, actionable, and clearly presented.
+  [clin=3 act=4 clar=6]  The brief's clinical accuracy is compromised by its interpretation of limited wellness data and the leap to 'autonomic suppression' without sufficient
+  [clin=7 act=7 clar=7]  The brief demonstrates excellent clinical reasoning, provides specific and actionable recommendations, and is professionally written and easy to under
+  [clin=7 act=7 clar=7]  All scores are high as the brief demonstrates excellent clinical reasoning, provides specific and actionable recommendations, and is presented with pr
+
+======================================================================
+  Ground-truth wellness_crash_normal_load clinical accuracy: mean 6.30  dist {3: 1, 4: 1, 7: 8}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/wellness_crash_normal_load__sports_scientist__gemini.jsonl

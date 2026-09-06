@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=post_competition  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=2 act=3 clar=5]  Clinical accuracy is the weakest dimension: the brief assigns LOW risk, declares load 'well-calibrated' and classifies 'normal adaptation — no overrea
+  [clin=2 act=3 clar=6]  The brief correctly identifies undertraining (ACWR 0.742) but then prescribes a further 20-30% volume reduction — the opposite of the indicated gradua
+  [clin=2 act=3 clar=4]  Clinical accuracy is the weakest dimension: the brief labels risk as LOW and classifies the athlete as 'normal adaptation — no overreaching indicators
+  [clin=2 act=3 clar=4]  Clinical accuracy is lowest because the brief labels a 7-day HRV suppression consistent with non-functional overreaching in an athlete returning from 
+  [clin=4 act=2 clar=6]  The sole recommendation — 'training load can be progressively increased' — gives no quantitative target (e.g., weekly load increment percentage, targe
+  [clin=3 act=3 clar=5]  The brief is internally contradictory — declaring LOW risk with 'recovery and load balance functioning effectively' while simultaneously flagging unde
+  [clin=2 act=3 clar=6]  The brief fails to contextualize the low ACWR against the explicitly stated taper phase — where a reduced acute:chronic ratio is the intended outcome,
+  [clin=3 act=2 clar=5]  Actionability is lowest because the only recommendation — 'continue training with heightened monitoring attention' — is a vague platitude that is imme
+  [clin=2 act=3 clar=6]  The brief correctly identifies undertraining (ACWR 0.75) yet prescribes a 20-30% volume reduction — the opposite of the indicated action — and dismiss
+  [clin=3 act=4 clar=6]  The brief is internally contradictory — it declares LOW risk with 'normal adaptation' and 'no additional monitoring needed,' yet prescribes a 20-30% v
+
+======================================================================
+  Ground-truth post_competition clinical accuracy: mean 2.50  dist {2: 6, 3: 3, 4: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/post_competition__coach__claude.jsonl

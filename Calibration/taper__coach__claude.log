@@ -1,0 +1,27 @@
+======================================================================
+  JUDGE CALIBRATION on GROUND-TRUTH briefs
+  scenario=taper  audience=coach  n=10
+  judge=claude-opus-5 (same prompt as real eval)
+======================================================================
+  These briefs are correct by construction. Low scores here mean
+  the JUDGE is the ceiling, not the model.
+
+  [clin=3 act=2 clar=6]  Actionability is lowest because the only recommendation — 'load can be progressively increased' — gives no quantitative ramp (e.g., weekly AU targets 
+  [clin=3 act=2 clar=6]  The sole recommendation — 'training load can be progressively increased' — gives no percentage, session count, AU target, or timeframe, leaving a coac
+  [clin=3 act=2 clar=6]  The single recommendation to 'progressively increase' load offers no quantitative prescription (target ACWR range, weekly percentage increment, sessio
+  [clin=3 act=3 clar=6]  The brief internally contradicts itself — declaring 'no action required' and 'normal adaptation' while the ACWR of 0.591 signals meaningful detraining
+  [clin=4 act=4 clar=6]  Clinical accuracy is only adequate because the brief internally contradicts itself — it states 'no monitored signal has crossed its threshold' and 'tr
+  [clin=2 act=3 clar=6]  The brief ignores the stated taper phase, in which a reduced ACWR of 0.578 is the intended outcome, and instead flags 'undertraining' and recommends a
+  [clin=5 act=4 clar=6]  The single recommendation of a 'gradual 5-10% load increase' lacks concrete translation into sessions, weekly AU targets, or a timeline (e.g., raising
+  [clin=2 act=3 clar=6]  Clinical accuracy is lowest because the brief misreads an intentionally reduced taper load as detraining and recommends a 5-10% load increase that wou
+  [clin=2 act=3 clar=6]  The brief misclassifies an HRV of 41.5ms as 'normal' when it is 6.3ms below baseline and therefore outside the stated ±3.8ms band, then compounds the 
+  [clin=3 act=4 clar=6]  The brief internally contradicts itself — it identifies an ACWR of 0.586 as below the 0.8 undertraining threshold yet simultaneously asserts 'no monit
+
+======================================================================
+  Ground-truth taper clinical accuracy: mean 3.00  dist {2: 3, 3: 5, 4: 1, 5: 1}
+======================================================================
+  Compare to your MODEL's score for this scenario. If they match,
+  the model reached the judge's ceiling — the residual is not a
+  fixable defect but a limit of the judge on this scenario.
+
+  saved: calibration/taper__coach__claude.jsonl
