@@ -1,0 +1,42 @@
+{
+  "zero_shot": {
+    "baseline": "zero_shot",
+    "n_rated": 438,
+    "clinical_accuracy_mean": 4.22,
+    "actionability_mean": 3.42,
+    "clarity_mean": 6.08,
+    "overall_mean": 4.57
+  },
+  "sft_only": {
+    "baseline": "sft_only",
+    "n_rated": 438,
+    "clinical_accuracy_mean": 3.24,
+    "actionability_mean": 4.33,
+    "clarity_mean": 5.78,
+    "overall_mean": 4.45
+  },
+  "main": {
+    "baseline": "main",
+    "n_rated": 438,
+    "clinical_accuracy_mean": 3.21,
+    "actionability_mean": 4.28,
+    "clarity_mean": 5.75,
+    "overall_mean": 4.41
+  },
+  "ablation_none": {
+    "baseline": "ablation_none",
+    "n_rated": 438,
+    "clinical_accuracy_mean": 3.18,
+    "actionability_mean": 4.26,
+    "clarity_mean": 5.78,
+    "overall_mean": 4.41
+  },
+  "ablation_no_signal_conflict": {
+    "baseline": "ablation_no_signal_conflict",
+    "n_rated": 438,
+    "clinical_accuracy_mean": 3.19,
+    "actionability_mean": 4.29,
+    "clarity_mean": 5.77,
+    "overall_mean": 4.42
+  }
+}
