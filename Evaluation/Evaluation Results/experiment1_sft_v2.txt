@@ -1,0 +1,33 @@
+============================================================
+  Stratified judge analysis — sft_v2
+  438 ratings, metadata from formatted_v2/sft_test.jsonl
+============================================================
+
+Overall:
+  Clin    Act     Clar    
+  4.38    4.80    6.37    
+
+By scenario type
+  stratum             Clin    Act     Clar    n     
+  ----------------------------------------------
+  recreational_minimal_data2.00    4.00    5.33    3     
+  early_overreaching  2.13    4.00    5.60    15    
+  preseason_intensification3.22    4.89    6.22    18    
+  travel_jet_lag      3.42    3.92    5.83    12    
+  normal_progressive  3.69    4.69    6.17    42    
+  double_session_accumulation3.89    5.44    6.50    18    
+  acwr_spike          4.03    5.03    6.25    36    
+  wellness_crash_normal_load4.11    4.72    5.94    18    
+  fixture_congestion  4.11    4.72    6.33    18    
+  monotony_problem    4.12    4.71    6.33    24    
+  heat_acclimatization4.22    5.22    6.56    9     
+  undertraining       4.38    4.76    6.48    21    
+  post_competition    4.45    4.21    6.36    33    
+  overtraining_syndrome4.67    4.79    6.25    24    
+  high_acwr_stable_physiology5.07    5.15    6.59    27    
+  illness_return      5.11    5.59    6.52    27    
+  taper               5.21    3.79    6.62    42    
+  altitude_camp       5.47    5.57    6.77    30    
+  youth_growth_spurt  5.57    5.71    6.81    21    
+
+(Slices sorted weakest-clinical-first. Low Clin with normal Clar = correct-looking but clinically inconsistent briefs.)

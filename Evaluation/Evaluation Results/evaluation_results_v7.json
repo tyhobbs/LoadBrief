@@ -1,0 +1,37 @@
+{
+  "reference_reward_ceiling": 0.704,
+  "models": {
+    "sft_v7": {
+      "baseline": "sft_v7",
+      "n_examples": 500,
+      "n_nonempty": 500,
+      "reward_mean": 0.72,
+      "reward_std": 0.117,
+      "reward_median": 0.74,
+      "risk_accuracy": 0.948,
+      "risk_within_one": 0.986,
+      "risk_severe_errors": 3,
+      "risk_unknown": 4,
+      "overreaching_accuracy": 0.554,
+      "per_register": {
+        "athlete": {
+          "risk_accuracy": 0.946,
+          "over_accuracy": 0.569,
+          "n": 167
+        },
+        "coach": {
+          "risk_accuracy": 0.952,
+          "over_accuracy": 0.545,
+          "n": 167
+        },
+        "sports_scientist": {
+          "risk_accuracy": 0.946,
+          "over_accuracy": 0.548,
+          "n": 166
+        }
+      },
+      "word_count_mean": 173.5,
+      "word_count_median": 166
+    }
+  }
+}
